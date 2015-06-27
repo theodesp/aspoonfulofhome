@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="bigplay-gradient.fw-Page_x25_201"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="200px"
+	 viewBox="0 0 100 200" enable-background="new 0 0 100 200" xml:space="preserve">
+<path fill="none" d="z"/>
+<g id="Background">
+</g>
+<g id="light">
+	<path id="Ellipse2" opacity="0.7" fill="#3B97D6" d="M13,150.5c0-20.711,16.789-37.5,37.5-37.5S88,129.789,88,150.5
+		S71.211,188,50.5,188S13,171.211,13,150.5z"/>
+	<path id="Polygon2" fill="#FFFFFF" d="M61.685,150.917l-18.369,14.334v-28.669L61.685,150.917z"/>
+</g>
+<path fill="none" d="z"/>
+<g id="light_1_">
+	<path id="Ellipse2_1_" opacity="0.5" fill="#666666" d="M12.833,50.236c0-20.711,16.789-37.5,37.5-37.5
+		c20.711,0,37.5,16.789,37.5,37.5s-16.789,37.5-37.5,37.5C29.623,87.736,12.833,70.947,12.833,50.236z"/>
+	<path id="Polygon2_1_" fill="#FFFFFF" d="M61.518,50.653L43.149,64.987V36.318L61.518,50.653z"/>
+</g>
+</svg>

@@ -1,0 +1,105 @@
+/***** Custom css rules here *****/
+
+
+/***** Colors *****/
+$oliveoil: #31621b;
+$darkolive: #404D00;
+$lightolive: #B4CC3D;
+$dampolive: #81a844;
+$paleolive: #A9CC00;
+$grey: #c8e3a2;
+
+
+
+/***** Mixins *****/
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+/***** Base *****/
+body {
+  background: $dampolive;
+}
+
+/***** Footer *****/
+.circle-social {
+    li {
+        background-color: $oliveoil;
+
+        &:hover {
+            background-color: darken($oliveoil, 5%);
+        }
+    }
+}
+
+.footer-list {
+
+    li {
+         @include transition(all, 0.25s, ease-in-out);
+    }
+    li.link-box {
+        background-color: $oliveoil;
+        cursor: pointer;
+        &:hover {
+            background-color: darken($oliveoil, 5%);
+        }
+    }
+}
+
+#wagtail-userbar {
+   top:200px;
+}
+
+ul.social-list li {
+    a,a:visited {
+        color: $darkolive;
+    }
+}
+
+#top-info {
+    li:last-child > a {
+        vertical-align: baseline;
+    }
+    .top-desc i:hover {
+        color: $lightolive;
+    }
+}
+
+.jq-dropdown-menu {
+    h5 {
+        font-size: 15px;
+        text-align: center;
+    }
+    input[type="radio"] {
+        display: initial;
+    }
+    input {
+        width: initial;
+    }
+    form {
+         padding: 10px 5px;
+    }
+}
+
+.no-js #loader {
+    display: none;
+}
+
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px; top: 0;
+}
+.preloader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(/static/images/ajax-loader.gif) center no-repeat #fff;
+}
