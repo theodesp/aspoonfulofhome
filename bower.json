@@ -1,0 +1,40 @@
+{
+  "name": "theoliveoilbakers",
+  "version": "0.0.0",
+  "authors": [
+    "Theofanis Despoudis <thdespou@hotmail.com>"
+  ],
+  "description": "The official source code of theoliveoilbakers.com website",
+  "keywords": [
+    "blog",
+    "wagtail",
+    "food",
+    "oliveoil",
+    "recipies"
+  ],
+  "license": "MIT",
+  "homepage": "http://theoliveoilbakers.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-easing": "*",
+    "simpleWeather": "~3.0.2",
+    "superfish": "~1.7.5",
+    "modernizr": "~2.8.3",
+    "jquery-parallax": "~1.1.3",
+    "jquery-scrollto": "~1.4.4",
+    "carouFredSel": "~6.2.1",
+    "mediaelement": "~2.17.0",
+    "fancybox": "~2.1.5",
+    "jquery.retina": "*",
+    "masonry": "~3.3.0",
+    "gmaps": "~0.4.18",
+    "isotope": "~2.2.0",
+    "jquery-dropdown": "*"
+  }
+}

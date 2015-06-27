@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags core_tags compress static i18n %}
+
+{% block content %}
+
+    <!-- content section start here -->
+        <section class="content-wrapper">    	
+            <div class="row">
+                <div class="twelve column">
+                    <div id="map"></div>
+                </div>
+
+                <div class="four column">
+                    <h3 class="inherit">{% trans "Our Details" %}</h3>
+                    <ul class="no-bullet list-line2">
+                        <li>
+                            <div class="no-border small icon-left">
+                                <i class="icon-map"></i>
+                            </div>
+                            <p class="text-overflow"><strong>{% trans "Location" %}</strong><br/>{% trans "Mesogi" %}<br/>{% trans "Paphos, Cyprus" %}</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="eight column">
+                    {% include 'core/elements/_intro.html' with intro=self.intro only %}
+
+                    <div id="contact-form-area">
+                        <!-- Contact Form Start //-->
+                        <form id="contactform" method="POST" action="{% pageurl self %}">
+                        {% csrf_token %}
+                            {% include "core/elements/_form_snippet.html" with form=form %}
+
+                        </form>
+                        <!-- Contact Form End //-->
+                    </div>	
+                </div>
+            </div>
+        </section>
+        <!-- content section end here -->
+{% endblock %}
+
+{% block extra_js %}
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+{% compress js %}
+<script src="{% static 'bower_components/gmaps/gmaps.min.js' %}"></script>
+<script type="text/coffeescript"
+charset="utf-8" src="{% static 'coffee/contact.coffee' %}">
+</script>
+{% endcompress %}
+
+{% endblock %}

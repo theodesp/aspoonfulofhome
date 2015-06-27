@@ -1,0 +1,16 @@
+{% load i18n %}
+
+<fieldset>
+{% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }}
+            {% if field.required %} <em>*</em> {% endif %}
+        {{ field }}
+    </div>
+{% endfor %}
+<div class="clear"></div>
+<label>&nbsp;</label>
+<button type="submit" name="submit" class="buttoncontact" id="buttonsend">{% trans "Submit" %}</button>
+<span class="loading" style="display: none;">Please wait..</span>
+</fieldset>

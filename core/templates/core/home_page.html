@@ -1,0 +1,147 @@
+{% extends "core/elements/_2_column_base.html" %}
+
+{% load static core_tags wagtailcore_tags i18n %}
+
+{% block articles %}
+    <h1>{% trans 'A string to be translated' %}</h1>
+    {% include "core/elements/_body.html" with body=self.body only %}
+    <div class="blog-wrapper">
+                        <div class="blogmedia-wrap">
+                            <img src="{% static 'images/walnut-filo.jpg' %}" alt=""/>
+                            <ul class="no-bullet post-info">
+                                <li><i class="icon-user"></i><span>Don Kuzenko</span></li>
+                                <li class="no-tag2"><i class="icon-clockalt-timealt"></i><span>May 18, 2013</span></li>
+                                <li class="no-tag"><i class="icon-tag"></i><span><a href="#">Gallery</a>, <a href="#">Photo</a>, <a href="#">Art</a></span></li>
+                                <li class="no-tag2"><i class="icon-comment"></i><span><a href="#">3 Comments</a></span></li>
+                            </ul>
+                        </div>
+
+                        <div class="blogcontent-wrap">            	
+                            <div class="post-type">
+                                <i class="icon-picture"></i>
+                            </div>
+                            <h3><a href="#">Example of image featured post</a></h3>                           	
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <hr/>
+                            <ul class="social-list">
+                                <li><a href="#"><i class="social-facebook"></i></a></li>
+                                <li><a href="#"><i class="social-twitter"></i></a></li>
+                                <li><a href="#"><i class="social-googleplus"></i></a></li>
+                            </ul>
+                            <a href="#" class="button-plain small orange">Learn more <span class="plain-arrow">&gt;</span></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="blog-wrapper">
+                        <div class="blogmedia-wrap">
+                            <img src="{% static 'images/walnut-filo.jpg' %}" alt=""/>
+                            <ul class="no-bullet post-info">
+                                <li><i class="icon-user"></i><span>Don Kuzenko</span></li>
+                                <li class="no-tag2"><i class="icon-clockalt-timealt"></i><span>May 18, 2013</span></li>
+                                <li class="no-tag"><i class="icon-tag"></i><span><a href="#">Gallery</a>, <a href="#">Photo</a>, <a href="#">Art</a></span></li>
+                                <li class="no-tag2"><i class="icon-comment"></i><span><a href="#">3 Comments</a></span></li>
+                            </ul>
+                        </div>
+
+                        <div class="blogcontent-wrap">            	
+                            <div class="post-type">
+                                <i class="icon-picture"></i>
+                            </div>
+                            <h3><a href="#">Example of image featured post</a></h3>                           	
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <hr/>
+                            <ul class="social-list">
+                                <li><a href="#"><i class="social-facebook"></i></a></li>
+                                <li><a href="#"><i class="social-twitter"></i></a></li>
+                                <li><a href="#"><i class="social-googleplus"></i></a></li>
+                            </ul>
+                            <a href="#" class="button-plain small orange">Learn more <span class="plain-arrow">&gt;</span></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>	
+
+                    <div class="blog-wrapper">
+                        <div class="blogmedia-wrap">
+                            <img src="{% static 'images/walnut-filo.jpg' %}" alt=""/>
+                            <ul class="no-bullet post-info">
+                                <li><i class="icon-user"></i><span>Don Kuzenko</span></li>
+                                <li class="no-tag2"><i class="icon-clockalt-timealt"></i><span>May 18, 2013</span></li>
+                                <li class="no-tag"><i class="icon-tag"></i><span><a href="#">Gallery</a>, <a href="#">Photo</a>, <a href="#">Art</a></span></li>
+                                <li class="no-tag2"><i class="icon-comment"></i><span><a href="#">3 Comments</a></span></li>
+                            </ul>
+                        </div>
+
+                        <div class="blogcontent-wrap">            	
+                            <div class="post-type">
+                                <i class="icon-picture"></i>
+                            </div>
+                            <h3><a href="#">Example of image featured post</a></h3>                           	
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <hr/>
+                            <ul class="social-list">
+                                <li><a href="#"><i class="social-facebook"></i></a></li>
+                                <li><a href="#"><i class="social-twitter"></i></a></li>
+                                <li><a href="#"><i class="social-googleplus"></i></a></li>
+                            </ul>
+                            <a href="#" class="button-plain small orange">Learn more <span class="plain-arrow">&gt;</span></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+{% endblock %}
+
+{% block sidebar %}
+<aside>
+                    	<div class="note-folded grey text-center">
+                        	<div class="widget-author">
+                                <img src="{% static 'images/gravatar-sotiria.png' %}" alt="" />
+                            </div>
+                        	<h4>Sotiria</h4>
+                            <hr/>
+                            <p>Visual artist, inspired, living and creating in Cyprus. My influences are Constructivism, Fauvism, Contemporary Art, and the dramatic landscape by which I am surrounded.
+                                I am a full time, stay at home mum to one daughter. When I am not reading, thinking about or practising my art, I bake for my family. I am especially interested in creating
+                                desserts with olive oil instead of other fats, and currently working on my other blog the olive bakers with the help of my family.
+                            </p>
+                        </div>
+                    </aside>
+
+                	<aside>
+                    	<div id="weather"></div>
+                    </aside>
+
+                    <aside>
+                    	<h4><span class="highlight">Recent Post</span></h4>
+                        <ul class="arrow list-line margin-top">
+                            <li><a href="#">Late 2013 iMac Review</a></li>
+                            <li><a href="#">Where Things Come From</a></li>
+                            <li><a href="#">WordPress Themes by Indonez</a></li>
+                            <li><a href="#">The Camera Collection</a></li>
+                            <li><a href="#">Coffee in the Bay Area</a></li>
+                        </ul>
+                    </aside>
+
+                    <aside>
+                    	<h4><span class="highlight">Twitter Feed</span></h4>
+                        <!-- Begin of Twitter -->
+                        <ul id="twitter"></ul>
+                        <!-- End of Twitter -->
+                    </aside>
+
+                    <aside>
+                        <div class="ads-wrapper text-center">
+                            <small>Advertisement</small>
+                            <ul class="no-bullet banner-list2">
+                                <li><a href="#"><img src="images/sample_images/banner_size3.gif" alt=""/></a></li>
+                            </ul>
+                        </div>
+                    </aside>
+{% endblock %}
+
+{% block pagination %}
+<!-- blog pagination -->
+<div class="blog-pagination">
+    <div class="pages blogpages">
+        <span class="pageof">Page 1 of 3</span><a href="#" class="current">1</a><a href="#">2</a><a href="#">3</a><a href="#">&raquo;</a>
+    </div>
+</div>
+{% endblock %}

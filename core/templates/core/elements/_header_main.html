@@ -1,0 +1,75 @@
+{% load static core_tags %}
+<header>
+    <div class="row">
+        <div class="twelve column">
+            <div id="left-header">
+                <!-- logo start here -->
+                <div id="logo">
+                    <a href="/">
+                        <img src="{% static 'images/logo-white.png' %}" alt="main-logo" class="retina"/>
+                    </a>
+                </div>
+                <!-- logo end here -->
+            </div>
+            <div id="right-header">
+                <div id="mainmenu-wrapper">
+                    <div class="left-menu">
+
+                        <!-- navigation start here -->
+                        <nav id="mainmenu">
+                            <ul id="menu">
+                                <li class="dropdown selected"><a href="index.html">Home</a>
+                                    <ul>
+                                        <li><a href="index-magazine.html">home magazine</a></li>
+                                        <li><a href="index-portfolio.html">home portfolio</a></li>
+                                        <li><a href="index-landing.html">home landing</a></li>
+                                        <li class="selected"><a href="index-blog.html">home bloging</a></li>
+                                        <li><a href="index-store.html">home store</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="#">About</a>
+                                    <ul>
+                                        <li><a href="column.html">column</a></li>
+                                        <li><a href="tables.html">tables</a></li>
+                                        <li><a href="button-list.html">button &amp; list</a></li>
+                                        <li><a href="icons.html">icon list</a></li>
+                                        <li><a href="icon-use.html">icon use</a></li>
+                                        <li><a href="typography.html">typography</a></li>
+                                        <li><a href="note-promo.html">note &amp; promo box</a></li>
+                                        <li><a href="tab-accordion.html">tab &amp; accordion</a></li>
+                                        <li><a href="alert-progress.html">alert &amp; progress</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="#">Home-making, Gardening & Life with Fibro/CFS</a>
+                                    <ul>
+                                        <li><a href="about.html">about us</a></li>
+                                        <li><a href="services.html">our services</a></li>
+                                        <li><a href="pricing-plan.html">pricing plan</a></li>
+                                        <li><a href="testimonials.html">client testimonials</a></li>
+                                        <li><a href="team.html">our team</a></li>
+                                        <li><a href="sitemap.html">flux sitemap</a></li>
+                                        <li><a href="faq.html">faq page</a></li>
+                                        <li><a href="404.html">404 error</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Recipes</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <!-- navigation end here -->
+
+                    </div>
+                    {% block search_box %}
+                        {% include "core/elements/_search_box.html" %}
+                    {% endblock %}
+                </div>
+                {% block header_extra %}
+                    {% pagetitle %}
+                    {% breadcrumbs %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+</header>
+<!-- header end here -->

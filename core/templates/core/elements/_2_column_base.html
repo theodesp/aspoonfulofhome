@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static core_tags wagtailcore_tags i18n %}
+
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+
+{% block content %}
+<section class="content-wrapper magazine-wrap">    	
+    <div class="row">            	
+        <div class="eight column">
+        <!-- articles start here -->
+        {% block articles %}{% endblock %}
+        <!-- pagination start here -->
+        {% block pagination %}{% endblock %}
+        </div>
+        <div class="four column">
+        <!-- sidebar content start here -->
+        {% block sidebar %}{% endblock %}
+        </div>
+    </div>
+</section>
+{% endblock %}

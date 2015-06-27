@@ -1,0 +1,166 @@
+{% load compress static wagtailuserbar i18n %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+        <meta name="description" content="" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <!-- ////////////////////////////////// -->
+        <!-- //     Retina Bookmark Icon     // -->
+        <!-- ////////////////////////////////// -->
+        <link rel="apple-touch-icon-precomposed" href="{% static 'apple-icon.png' %}"/>
+
+        <!-- ////////////////////////////////// -->
+        <!-- //     Retina Bookmark Icon     // -->
+        <!-- ////////////////////////////////// -->
+        <link rel="apple-touch-icon-precomposed" href="{% static 'apple-icon.png' %}"/>
+
+        <!-- ////////////////////////////////// -->
+        <!-- //      Stylesheets Files       // -->
+        <!-- ////////////////////////////////// -->
+        {% compress css %}
+
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/media.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/revolution.css' %}" media="screen"/>
+        <link rel="stylesheet" href="{% static 'css/media-slideshow.css' %}" media="screen"/>
+        <link rel="stylesheet" href="{% static 'bower_components/jquery-dropdown/jquery.dropdown.min.css' %}"/>
+        <link rel="stylesheet" type="text/x-scss" href="{% static "css/theoliveoilbakers.scss" %}"/>
+        <link rel="stylesheet" href="{% static 'css/noscript.css' %}" media="screen,all" id="noscript"/>
+        {% endcompress %}
+
+        <!-- ////////////////////////////////// -->
+        <!-- //     Google Webfont Files     // -->
+        <!-- ////////////////////////////////// -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,300italic,400italic,700italic"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rationale"/>
+
+        <!-- ////////////////////////////////// -->
+        <!-- //        Favicon Files         // -->
+        <!-- ////////////////////////////////// -->
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
+
+        {% block extra_css %}
+
+        {% endblock %}
+
+        <!-- IE Fix for HTML5 Tags -->
+        <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+
+        <!-- preloader here -->
+        <div class="preloader"></div>
+
+        {% wagtailuserbar %}
+        <div id="box-wrapper">
+        <!-- header start here -->
+        {% block heading %}
+            {% include 'core/elements/_header_top.html' %}
+            {% include 'core/elements/_header_main.html' %}
+        {% endblock %}
+
+        <!-- content section start here -->
+        {% block content %}{% endblock %}
+
+        <!-- footer start here -->
+        {% block footer %}
+        <footer>
+            <div class="row">
+                <div class="eight column">
+                    <ul class="no-bullet footer-list smallmargin-top2">
+                        <li class="link-box"><a href="#"><i class="icon-home"></i>Home</a></li>
+                        <li class="link-box"><a href="#"><i class="icon-blogger-blog"></i>Blog</a></li>
+                        <li class="link-box"><a href="#"><i class="icon-warning-sign"></i>Disclaimer</a></li>
+                        <li class="link-box"><a href="{% url 'sitemap_xml' %}"><i class="icon-treediagram"></i>Sitemap</a></li>
+                        <li class="link-box"><a href="#"><i class="icon-foodtray"></i>Recipes</a></li>
+                        <li class="link-box"><a href="#"><i class="icon-info-sign"></i>Olive Oil Facts</a></li>
+                    </ul>
+                    <p>&copy; 2014 The Olive Oil Bakers - All Right Reserved</p>
+                </div>
+
+                <div class="four column">
+                    <ul class="social-list circle-social">
+                        <li><a href="#"><i class="social-facebook"></i></a></li>
+                        <li><a href="#"><i class="social-twitter"></i></a></li>
+                        <li><a href="#"><i class="social-dribbble"></i></a></li>
+                        <li><a href="#"><i class="social-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        {% endblock %}
+        <!-- footer end here -->
+        </div>
+
+        {# External javascript #}
+        <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+
+        {% compress js %}
+        <script type="text/javascript" src="{% static 'bower_components/jquery-easing/jquery.easing.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bower_components/superfish/dist/js/superfish.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bower_components/jquery-parallax/scripts/jquery.parallax-1.1.3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.li-scroller.1.0.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bower_components/jquery-dropdown/jquery.dropdown.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bower_components/simpleWeather/jquery.simpleWeather.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bower_components/carouFredSel/jquery.carouFredSel-6.2.1.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.themepunch.plugins.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.themepunch.revolution.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bower_components/mediaelement/build/mediaelement-and-player.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bower_components/fancybox/source/jquery.fancybox.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.fancybox-media.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/accordion-functions.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/theoliveoilbakers.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bower_components/jquery.retina/jquery.retina.js' %}"></script>
+
+        <script type="text/coffeescript" charset="utf-8">
+            (($) ->
+                $('img.retina').retina '@2x'
+                $('#noscript').remove()
+                $(window).load ->
+                    # Animate loader off screen
+                    $('.preloader').fadeOut 'slow'
+                    return
+                return
+            ) jQuery
+        </script>
+        {% endcompress %}
+
+        {% block extra_js %}{% endblock %}
+
+        <!-- laguage select dropdown here -->
+        <div id="jq-dropdown-1" class="jq-dropdown jq-dropdown-tip">
+        <ul class="jq-dropdown-menu">
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}" />
+                <h5>{%trans 'Change language' %}</h5>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <input type="radio" name="language"
+                        value="{{ language.code }}"
+                        {% if language.code == LANGUAGE_CODE %}
+                            checked="checked"
+                        {% endif %}>{{ language.name_local }} ({{ language.code }})<br/>{% endfor %}
+                </select>
+                <input type="submit" value="Change" />
+            </form>
+        </ul>
+    </div>
+
+    </body>
+</html>

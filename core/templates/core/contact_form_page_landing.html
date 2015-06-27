@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load i18n wagtailcore_tags %}
+
+{% block content %}
+<section class="content-wrapper">    	
+    <div class="row">
+        <div class="12 columns">
+            <div style="text-align: center;">
+                {{ self.thank_you_text|richtext }}
+                <a href="/" class="button small" style="background-color: #A9CC00">{% trans "Go to Homepage" %}</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
