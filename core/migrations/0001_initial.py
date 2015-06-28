@@ -9,7 +9,8 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0018_auto_20150626_1708'),
+        ('wagtailcore', '0019_auto_20150628_1404'),
+        ('wagtaildocs', '0003_add_verbose_names'),
     ]
 
     operations = [
@@ -38,13 +39,7 @@ class Migration(migrations.Migration):
                 ('from_address', models.CharField(max_length=255, verbose_name='From address', blank=True)),
                 ('subject', models.CharField(max_length=255, verbose_name='Subject', blank=True)),
                 ('intro', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('intro_en', wagtail.wagtailcore.fields.RichTextField(null=True, blank=True)),
-                ('intro_el', wagtail.wagtailcore.fields.RichTextField(null=True, blank=True)),
-                ('intro_es', wagtail.wagtailcore.fields.RichTextField(null=True, blank=True)),
                 ('thank_you_text', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('thank_you_text_en', wagtail.wagtailcore.fields.RichTextField(null=True, blank=True)),
-                ('thank_you_text_el', wagtail.wagtailcore.fields.RichTextField(null=True, blank=True)),
-                ('thank_you_text_es', wagtail.wagtailcore.fields.RichTextField(null=True, blank=True)),
             ],
             options={
                 'verbose_name': 'Contact',
@@ -56,14 +51,27 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('body', wagtail.wagtailcore.fields.RichTextField(blank=True)),
-                ('body_en', wagtail.wagtailcore.fields.RichTextField(null=True, blank=True)),
-                ('body_el', wagtail.wagtailcore.fields.RichTextField(null=True, blank=True)),
-                ('body_es', wagtail.wagtailcore.fields.RichTextField(null=True, blank=True)),
             ],
             options={
                 'abstract': False,
             },
             bases=('wagtailcore.page',),
+        ),
+        migrations.CreateModel(
+            name='HomePageRelatedLink',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sort_order', models.IntegerField(null=True, editable=False, blank=True)),
+                ('link_external', models.URLField(verbose_name='External link', blank=True)),
+                ('title', models.CharField(help_text='Link title', max_length=255)),
+                ('document_link', models.ForeignKey(related_name='+', blank=True, to='wagtaildocs.Document', null=True)),
+                ('link_page', models.ForeignKey(related_name='+', blank=True, to='wagtailcore.Page', null=True)),
+                ('page', modelcluster.fields.ParentalKey(related_name='related_links', to='core.HomePage')),
+            ],
+            options={
+                'ordering': ['sort_order'],
+                'abstract': False,
+            },
         ),
         migrations.AddField(
             model_name='contactformfield',

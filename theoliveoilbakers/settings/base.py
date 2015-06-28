@@ -42,8 +42,6 @@ BASE_URL = 'http://example.com'
 # Application definition
 
 INSTALLED_APPS = (
-    'wagtail_modeltranslation',
-    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

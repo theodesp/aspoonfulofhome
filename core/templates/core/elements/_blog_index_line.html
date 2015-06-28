@@ -1,0 +1,43 @@
+{% load static core_tags wagtailcore_tags i18n wagtailimages_tags %}
+
+<div class="blog-wrapper">
+    <div class="blogmedia-wrap">
+    {% if blog.promo_image %}
+        {% image blog.promo_image width-709 as img %}
+        <img class="media-object" src="{{ img.url }}" alt="{{ img.title }}"/>
+
+        <ul class="no-bullet post-info">
+            <li><i class="icon-user"></i><span>{{ blog.owner }}</span></li>
+            {% if blog.tags.all %}
+                <li class="no-tag">
+                    <i class="icon-tag"></i>
+                    <span>
+                    {% for tag in blog.tags.all %}
+                        <a href="#">{{ tag }}</a>,
+                    {% endfor %}
+                    </span>
+                </li>
+            {% endif %}
+            <li class="no-tag2"><i class="icon-clockalt-timealt"></i><span>{{ blog.date }}</span></li>
+        </ul>
+    {% endif %}
+    </div>
+
+    <div class="blogcontent-wrap">            	
+        <div class="post-type">
+            <i class="icon-picture"></i>
+        </div>
+        <h3><a href="{% pageurl blog %}">{{ blog.title }}</a></h3>
+        {% if blog.search_description %}
+        <p>{{ blog.search_description }}</p>
+        {% endif %}
+        <hr>
+        <ul class="social-list">
+            <li><a href="#"><i class="social-facebook"></i></a></li>
+            <li><a href="#"><i class="social-twitter"></i></a></li>
+            <li><a href="#"><i class="social-googleplus"></i></a></li>
+        </ul>
+        <a href="{% pageurl blog %}" class="button-plain small orange">{% trans 'Learn more' %} <span class="plain-arrow">&gt;</span></a>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,12 @@
+{% load i18n %}
+
+{% if related_links %}
+<aside>
+    <h4><span class="highlight">{% trans 'Related Links' %}</span></h4>
+        <ul class="arrow list-line margin-top">
+        {% for related_link in related_links %}
+             <li><a href="{{ related_link.link }}">{{ related_link.title }}</a></li>
+        {% endfor %}
+        </ul>
+</aside>
+{% endif %}
