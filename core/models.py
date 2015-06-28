@@ -144,7 +144,7 @@ class BlogIndexPage(Page):
         # Pagination
         page = request.GET.get('page')
         # Show 10 blogs per page
-        paginator = Paginator(blogs, 1)
+        paginator = Paginator(blogs, 10)
         try:
             blogs = paginator.page(page)
         except PageNotAnInteger:
