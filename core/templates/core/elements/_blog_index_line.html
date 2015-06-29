@@ -2,7 +2,19 @@
 
 <div class="blog-wrapper">
     <div class="blogmedia-wrap">
-    {% if blog.promo_image %}
+    {% if blog.carousel_items.all %}
+        <div class="banner-blog">
+            <ul>
+            {% for carousel_item in blog.carousel_items.all %}
+                <li data-transition="slidehorizontal">
+                    {% image carousel_item.image width-709 as img %}
+                    <img src="{{ img.url }}" alt="{{ img.title }}"/>
+                </li>
+            {% endfor %}
+            </ul>
+            <div class="tp-bannertimer tp-bottom"></div>
+        </div>
+    {% elif blog.promo_image %}
         {% image blog.promo_image width-709 as img %}
         <img class="media-object" src="{{ img.url }}" alt="{{ img.title }}"/>
 

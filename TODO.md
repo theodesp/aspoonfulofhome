@@ -37,3 +37,4 @@
 * Add custom tags for social links
 * Add google analytics
 * Add support for multiple blog formats
+* Add carousel **DONE**
