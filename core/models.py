@@ -118,7 +118,7 @@ class BlogIndexPageRelatedLink(Orderable, RelatedLink):
 
 
 class BlogIndexPage(Page):
-    intro = RichTextField(blank=True)
+    intro = models.CharField(max_length=255, help_text=_("Intro"))
 
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
@@ -196,7 +196,7 @@ class BlogPage(Page):
         index.SearchField('body'),
     )
 
-    parent_page_types = ['BlogIndexPage']
+    parent_page_types = ['BlogIndexPage', 'BlogPage']
 
     @property
     def blog_index(self):
@@ -250,3 +250,35 @@ ContactFormPage.content_panels = [
         FieldPanel('subject', classname="full"),
         ], "Email")
 ]
+
+
+class StandardPage(Page):
+    intro = models.CharField(max_length=255, help_text=_("Intro"))
+    body = RichTextField(blank=True)
+    promo_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    search_fields = Page.search_fields + (
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    )
+
+StandardPage.content_panels = [
+    FieldPanel('title', classname="full title"),
+    FieldPanel('intro', classname="full"),
+    FieldPanel('body', classname="full"),
+    InlinePanel(StandardPage, 'related_links', label="Related links"),
+]
+
+StandardPage.promote_panels = Page.promote_panels + [
+    ImageChooserPanel('promo_image'),
+]
+
+
+class StandardPageRelatedLink(Orderable, RelatedLink):
+    page = ParentalKey('StandardPage', related_name='related_links')

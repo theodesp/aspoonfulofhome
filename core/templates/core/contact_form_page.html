@@ -24,7 +24,9 @@
                 </div>
 
                 <div class="eight column">
-                    {% include 'core/elements/_intro.html' with intro=self.intro only %}
+                    {% if self.intro %}
+                        <p>{{ self.intro|richtext }}</p>
+                    {% endif %}
 
                     <div id="contact-form-area">
                         <!-- Contact Form Start //-->

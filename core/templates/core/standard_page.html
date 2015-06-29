@@ -1,0 +1,18 @@
+{% extends "core/elements/right_sidebar_base.html" %}
+
+{% load static core_tags wagtailcore_tags i18n wagtailimages_tags %}
+
+{% block articles %}
+
+{% include "core/elements/_intro.html" with intro=self.intro only %}
+
+{% include "core/elements/_body.html" with body=self.body only %}
+
+{% endblock %}
+
+{% block sidebar %}
+<aside>
+    <div id="weather"></div>
+</aside>
+{% include "core/elements/related_links.html" with related_links=self.related_links.all only %}
+{% endblock %}

@@ -9,7 +9,7 @@
 * Add the Blog page model **DONE**
 * Add email subscription
 * Add comments
-* Add the standardpage model
+* Add the standardpage model **DONE**
 * Add models for listings
 * Add snippets for facebook, etc **DONE**
 * Add the theme
