@@ -1,28 +1,27 @@
-{% extends 'base.html' %}
+{% extends "core/elements/right_sidebar_base.html" %}
 
 {% load static core_tags wagtailcore_tags i18n %}
 
-{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+{% block articles %}
+    {% if request.GET.tag|length %}
+        <h4>Showing posts tagged as <strong>{{ request.GET.tag|safe }}</strong>
+            <a href=" {% pageurl self %} "></a>
+        </h4>
+    {% endif %}
+    {% for blog in blogs %}
+        {% include "core/elements/_blog_index_line.html" %}
+    {% empty %}
+        <div class="alert info"><i class="icon-info-sign"></i>{% trans 'No blogs found!' %}</div>
+    {% endfor %}
+{% endblock %}
 
-{% block content %}
-<section class="content-wrapper">
-    <div class="row">
-        <div class="eight column">
-            {% for blog in blogs %}
-                {% include "core/elements/_blog_index_line.html" %}
-            {% empty %}
-                <div class="alert info"><i class="icon-info-sign"></i>{% trans 'No blogs found!' %}</div>
-            {% endfor %}
+{% block pagination %}
+    {% include 'core/elements/_pagination.html' %}
+{% endblock %}
 
-            {% include 'core/elements/_pagination.html' %}
-        </div>
-
-        <div class="four column">
-            <aside>
-                <div id="weather"></div>
-            </aside>
-            {% include "core/elements/related_links.html" with related_links=self.related_links.all only %}
-        </div>
-    </div>
-</section>
+{% block sidebar %}
+<aside>
+    <div id="weather"></div>
+</aside>
+{% include "core/elements/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}

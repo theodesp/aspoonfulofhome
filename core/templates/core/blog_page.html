@@ -1,0 +1,44 @@
+{% extends "core/elements/right_sidebar_base.html" %}
+
+{% load static core_tags wagtailcore_tags i18n wagtailimages_tags %}
+
+{% block articles %}
+<div class="blog-wrapper">
+    <div class="blogmedia-wrap">
+    {% if self.promo_image %}
+        {% image self.promo_image width-709 as img %}
+        <img class="media-object" src="{{ img.url }}" alt="{{ img.title }}"/>
+
+        <ul class="no-bullet post-info">
+            <li><i class="icon-user"></i><span>{{ self.owner }}</span></li>
+            {% if self.tags.all %}
+                <li class="no-tag">
+                    <i class="icon-tag"></i>
+                    <span>
+                    {% for tag in blog.tags.all %}
+                        <a href="{% pageurl self %}?tag={{ tag }}">{{ tag }}</a>,
+                    {% endfor %}
+                    </span>
+                </li>
+            {% endif %}
+            <li class="no-tag2"><i class="icon-clockalt-timealt"></i><span>{{ self.date }}</span></li>
+        </ul>
+    {% endif %}
+    </div>
+    <div class="blogcontent-wrap">
+        <div class="post-type">
+            <i class="icon-picture"></i>
+        </div>
+        <h3><a href="#">{{ self.title }}</a></h3>
+        {% include "core/elements/_body.html" with body=self.body only %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+<aside>
+    <div id="weather"></div>
+</aside>
+{% include "core/elements/related_links.html" with related_links=self.related_links.all only %}
+{% endblock %}

@@ -1,4 +1,4 @@
-{% load compress static wagtailuserbar i18n %}
+{% load compress static wagtailuserbar i18n core_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -136,6 +136,7 @@
                 return
             ) jQuery
         </script>
+
         {% endcompress %}
 
         {% block extra_js %}{% endblock %}

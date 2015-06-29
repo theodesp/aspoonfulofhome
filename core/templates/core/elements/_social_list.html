@@ -1,0 +1,5 @@
+<ul class="social-list">
+    {% for provider, link in social_links.items %}
+        <li><a href="{{ link }}"><i class="social-{{ provider }}"></i></a></li>
+    {% endfor %}
+</ul>

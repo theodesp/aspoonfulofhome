@@ -13,7 +13,7 @@
                     <i class="icon-tag"></i>
                     <span>
                     {% for tag in blog.tags.all %}
-                        <a href="#">{{ tag }}</a>,
+                        <a href="{% pageurl self %}?tag={{ tag }}">{{ tag }}</a>,
                     {% endfor %}
                     </span>
                 </li>
@@ -32,11 +32,9 @@
         <p>{{ blog.search_description }}</p>
         {% endif %}
         <hr>
-        <ul class="social-list">
-            <li><a href="#"><i class="social-facebook"></i></a></li>
-            <li><a href="#"><i class="social-twitter"></i></a></li>
-            <li><a href="#"><i class="social-googleplus"></i></a></li>
-        </ul>
+
+        {% social_list blog %}
+
         <a href="{% pageurl blog %}" class="button-plain small orange">{% trans 'Learn more' %} <span class="plain-arrow">&gt;</span></a>
     </div>
     <div class="clear"></div>

@@ -1,8 +1,18 @@
+from django.utils.http import urlencode
 from django import template
 
 from wagtail.wagtailcore.models import Page, Site
 
 register = template.Library()
+
+
+sharer_links = {
+    'facebook': 'http://www.facebook.com/sharer.php?u={absolute_url}',
+    'twitter':
+    'https://twitter.com/intent/tweet?original_referer={absolute_url}&amp;url={absolute_url}',
+    'googleplus':
+    'https://plusone.google.com/_/+1/confirm?hl=en-US&amp;url={absolute_url}',
+}
 
 
 @register.inclusion_tag('core/elements/_pagetitle.html', takes_context=True)
@@ -34,4 +44,19 @@ def breadcrumbs(context):
     return {
         'ancestors': ancestors,
         'request': context['request'],
+    }
+
+
+@register.inclusion_tag('core/elements/_social_list.html')
+def social_list(page):
+
+    if page is None:
+        social_links = None
+    else:
+        social_links = {
+            k: v.format(absolute_url=page.full_url)
+            for k, v in list(sharer_links.items())
+        }
+    return {
+        'social_links': social_links,
     }
