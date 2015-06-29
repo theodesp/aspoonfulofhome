@@ -8,7 +8,7 @@
 * Add the recipy page model
 * Add the Blog page model **DONE**
 * Add email subscription
-* Add comments
+* Add comments **DONE**
 * Add the standardpage model **DONE**
 * Add models for listings
 * Add snippets for facebook, etc **DONE**
@@ -38,3 +38,4 @@
 * Add google analytics
 * Add support for multiple blog formats
 * Add carousel **DONE**
+* Add tag cloud

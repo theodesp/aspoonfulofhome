@@ -1,4 +1,4 @@
-{% load compress static wagtailuserbar i18n core_tags %}
+{% load compress static wagtailuserbar wagtailcore_tags i18n core_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -80,12 +80,12 @@
             <div class="row">
                 <div class="eight column">
                     <ul class="no-bullet footer-list smallmargin-top2">
-                        <li class="link-box"><a href="#"><i class="icon-home"></i>Home</a></li>
-                        <li class="link-box"><a href="#"><i class="icon-blogger-blog"></i>Blog</a></li>
-                        <li class="link-box"><a href="#"><i class="icon-warning-sign"></i>Disclaimer</a></li>
-                        <li class="link-box"><a href="{% url 'sitemap_xml' %}"><i class="icon-treediagram"></i>Sitemap</a></li>
-                        <li class="link-box"><a href="#"><i class="icon-foodtray"></i>Recipes</a></li>
-                        <li class="link-box"><a href="#"><i class="icon-info-sign"></i>Olive Oil Facts</a></li>
+                        <li class="link-box"><a href="{% pageurl request.site.root_page %}"><i class="icon-home"></i>{% trans 'Home' %}</a></li>
+                        <li class="link-box"><a href="/blog"><i class="icon-blogger-blog"></i>{% trans 'Blog' %}</a></li>
+                        <li class="link-box"><a href="/disclaimer"><i class="icon-warning-sign"></i>{% trans 'Disclaimer' %}</a></li>
+                        <li class="link-box"><a href="{% url 'sitemap_xml' %}"><i class="icon-treediagram"></i>{% trans 'Sitemap' %}</a></li>
+                        <li class="link-box"><a href="/recipes"><i class="icon-foodtray"></i>{% trans 'Recipes' %}</a></li>
+                        <li class="link-box"><a href="/olive-oil-facts"><i class="icon-info-sign"></i>{% trans 'Olive Oil Facts' %}</a></li>
                     </ul>
                     <p>&copy; 2014 The Olive Oil Bakers - All Right Reserved</p>
                 </div>
@@ -124,6 +124,19 @@
         <script type="text/javascript" src="{% static 'js/accordion-functions.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/theoliveoilbakers.js' %}"></script>
         <script type="text/javascript" src="{% static 'bower_components/jquery.retina/jquery.retina.js' %}"></script>
+
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'theoliveoilbakers';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
         <script type="text/coffeescript" charset="utf-8">
             (($) ->

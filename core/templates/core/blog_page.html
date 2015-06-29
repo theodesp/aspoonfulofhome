@@ -44,6 +44,11 @@
         <h3><a href="#">{{ self.title }}</a></h3>
         {% include "core/elements/_body.html" with body=self.body only %}
     </div>
+    <!-- Begin of Comment -->
+    <div id="comment">
+        <h4>Responses to "{{ self.title }}"</h4>
+        <div id="disqus_thread"></div>
+    </div>
 </div>
 
 {% endblock %}
