@@ -137,10 +137,10 @@ class BlogIndexPage(Page):
     def get_context(self, request):
         # Get blogs
         blogs = self.blogs
-        ## Filter by tag
-        #tag = request.GET.get('tag')
-        #if tag:
-        #blogs = blogs.filter(tags__name=tag)
+        # Filter by tag
+        tag = request.GET.get('tag')
+        if tag:
+            blogs = blogs.filter(tags__name=tag)
         # Pagination
         page = request.GET.get('page')
         # Show 10 blogs per page

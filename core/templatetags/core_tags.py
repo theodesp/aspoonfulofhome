@@ -15,6 +15,51 @@ sharer_links = {
 }
 
 
+def has_menu_children(page):
+    """
+    Check if page has children that can appear in menus
+    """
+    return page.get_children().live().in_menu().exists()
+
+
+# Retrieves the top menu items - the immediate children of the parent page
+@register.inclusion_tag('core/elements/_top_menu.html', takes_context=True)
+def top_menu(context, parent, calling_page=None):
+    menuitems = parent.get_children().live().in_menu().order_by('title')
+    for menuitem in menuitems:
+        menuitem.show_dropdown = has_menu_children(menuitem)
+        # The template engine can pass an empty string to calling_page
+        # if the variable passed as calling_page does not exist.
+        menuitem.active = (
+            calling_page.url.startswith(menuitem.url)
+            if calling_page else False
+        )
+    return {
+        'calling_page': calling_page,
+        'menuitems': menuitems,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+
+@register.inclusion_tag(
+    'core/elements/_top_menu_children.html',
+    takes_context=True
+)
+def top_menu_children(context, parent):
+    """
+    Retrieves the children of the top menu items for the drop downs
+    """
+    menuitems_children = parent.get_children()
+    menuitems_children = menuitems_children.live().in_menu()
+    return {
+        'parent': parent,
+        'menuitems_children': menuitems_children,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+
 @register.inclusion_tag('core/elements/_pagetitle.html', takes_context=True)
 def pagetitle(context):
     self = context.get('self')

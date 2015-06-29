@@ -4,14 +4,14 @@
 * Set elasticsearch settings for production **DONE**
 * Add the Contact page model **DONE**
 * Add the sitemap **DONE**
-* Add the content menu
+* Add the content menu **DONE**
 * Add the recipy page model
 * Add the Blog page model **DONE**
 * Add email subscription
 * Add comments
 * Add the standardpage model
 * Add models for listings
-* Add snippets for facebook, etc
+* Add snippets for facebook, etc **DONE**
 * Add the theme
 * Add the embeded models
 * Add tags **DONE**
