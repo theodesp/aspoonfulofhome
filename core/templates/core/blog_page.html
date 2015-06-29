@@ -34,6 +34,7 @@
                 </li>
             {% endif %}
             <li class="no-tag2"><i class="icon-clockalt-timealt"></i><span>{{ self.date }}</span></li>
+            <li class="no-tag2"><i class="icon-comment"></i><span><a href="{% pageurl self %}#disqus_thread"></a></li>
         </ul>
     {% endif %}
     </div>
@@ -41,7 +42,7 @@
         <div class="post-type">
             <i class="icon-picture"></i>
         </div>
-        <h3><a href="#">{{ self.title }}</a></h3>
+        <h3><a href="{% pageurl self %}">{{ self.title }}</a></h3>
         {% include "core/elements/_body.html" with body=self.body only %}
     </div>
     <!-- Begin of Comment -->
