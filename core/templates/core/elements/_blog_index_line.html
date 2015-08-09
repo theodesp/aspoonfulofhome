@@ -31,7 +31,7 @@
                 </li>
             {% endif %}
             <li class="no-tag2"><i class="icon-clockalt-timealt"></i><span>{{ blog.date }}</span></li>
-            <li class="no-tag2"><i class="icon-comment"></i><span class="disqus-comment-count" data-disqus-url="{% pageurl page %}"></span></li>
+            <li class="no-tag2"><i class="icon-comment"></i><span class="disqus-comment-count" data-disqus-url="{% pageurl self %}"></span></li>
         </ul>
     {% endif %}
     </div>

@@ -7,7 +7,7 @@ from taggit.models import Tag
 
 from wagtail.wagtailcore.models import Page, Site
 
-from core.models import BlogPage, RecipePage
+from core.models import BlogPage, RecipePage, RecipeIndexPage
 
 register = template.Library()
 
@@ -141,6 +141,18 @@ def recent_pages(context, delimiter=5):
         BlogPage.objects.values_list('id', flat=True))))[:5]
     return {
         'pages': pages,
+        'request': context['request'],
+    }
+
+
+@register.inclusion_tag('core/elements/_tag_cloud.html',
+takes_context=True)
+def tag_cloud(context):
+    tags = Tag.objects.filter(id__in=
+        RecipePage.objects.values_list('tags', flat=True))
+    return {
+        'tags': tags,
+        'tag_listing_page': RecipeIndexPage.objects.first(),
         'request': context['request'],
     }
 

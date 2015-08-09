@@ -2,12 +2,12 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import django.db.models.deletion
 import core.models
-import wagtail.wagtailcore.fields
-import wagtail.wagtailcore.blocks
 import modelcluster.fields
 import wagtail.wagtailimages.blocks
-import django.db.models.deletion
+import wagtail.wagtailcore.fields
+import wagtail.wagtailcore.blocks
 import modelcluster.contrib.taggit
 
 
@@ -190,7 +190,6 @@ class Migration(migrations.Migration):
                 ('date', models.DateField(verbose_name='Post date')),
                 ('recipe', wagtail.wagtailcore.fields.StreamField([('image', wagtail.wagtailimages.blocks.ImageChooserBlock(help_text='Overview of the ingredients', required=False)), ('ingredients', wagtail.wagtailcore.blocks.ListBlock(wagtail.wagtailcore.blocks.StructBlock([(b'ingredient', wagtail.wagtailcore.blocks.CharBlock(help_text='Ingredient name')), (b'amount', wagtail.wagtailcore.blocks.CharBlock(help_text='Ingredient amount in units'))]), template='core/elements/_recipe_ingredients_list.html')), ('serves', wagtail.wagtailcore.blocks.ChoiceBlock(help_text='How many people this recipe serves', choices=[('1', 'One'), ('2', 'Two'), ('4-6', 'Four to six'), ('6+', 'More than six')])), ('time', wagtail.wagtailcore.blocks.CharBlock(help_text='How much time it takes to prepare')), ('steps', wagtail.wagtailcore.blocks.ListBlock(core.models.RecipeStepsBlock, template='core/elements/_recipe_steps_list.html'))])),
                 ('promo_image', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='wagtailimages.Image', null=True)),
-                ('tags', modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='core.BlogPageTag', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags')),
             ],
             options={
                 'abstract': False,
@@ -286,6 +285,11 @@ class Migration(migrations.Migration):
             model_name='recipepagecarouselitem',
             name='page',
             field=modelcluster.fields.ParentalKey(related_name='carousel_items', to='core.RecipePage'),
+        ),
+        migrations.AddField(
+            model_name='recipepage',
+            name='tags',
+            field=modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='core.RecipePageTag', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
         ),
         migrations.AddField(
             model_name='recipeindexpagerelatedlink',

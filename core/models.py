@@ -289,9 +289,7 @@ class StandardPageRelatedLink(Orderable, RelatedLink):
 
 
 class RecipeIndexPage(Page):
-
     intro = models.CharField(max_length=255, help_text=_("Intro"))
-
     search_fields = Page.search_fields + (
         index.SearchField('intro'),
     )
@@ -342,7 +340,6 @@ class RecipePageRelatedLink(Orderable, RelatedLink):
 
 
 class IngredientsListBlock(blocks.StructBlock):
-
     ingredient = blocks.CharBlock(help_text=_("Ingredient name"))
     amount = blocks.CharBlock(help_text=_("Ingredient amount in units"))
 
@@ -354,6 +351,10 @@ class RecipeStepsBlock(blocks.StructBlock):
     video = EmbedBlock(required=False, help_text=_("Step video"))
 
 
+class RecipePageTag(TaggedItemBase):
+    content_object = ParentalKey('RecipePage', related_name='tagged_items')
+
+
 # Recipe Page
 class RecipePage(Page):
     SERVES_CHOICES = (
@@ -363,7 +364,7 @@ class RecipePage(Page):
         ('6+', 'More than six'),
     )
     body = RichTextField(blank=True)
-    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
+    tags = ClusterTaggableManager(through=RecipePageTag, blank=True)
     date = models.DateField("Post date")
     recipe = StreamField([
         ('image', ImageChooserBlock(required=False,
@@ -411,7 +412,3 @@ RecipePage.promote_panels = Page.promote_panels + [
 
 class RecipePageCarouselItem(Orderable, CarouselItem):
     page = ParentalKey('RecipePage', related_name='carousel_items')
-
-
-class RecipePageTag(TaggedItemBase):
-    content_object = ParentalKey('RecipePage', related_name='tagged_items')

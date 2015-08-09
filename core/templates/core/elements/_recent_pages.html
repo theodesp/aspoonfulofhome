@@ -26,7 +26,7 @@
                         <i class="icon-tag"></i>
                         <span>
                         {% for tag in page.specific.tags.all %}
-                            <a href="{% pageurl self %}?tag={{ tag }}">{{ tag }}</a>,
+                            <a href="{% pageurl page.get_parent %}?tag={{ tag }}">{{ tag }}</a>,
                         {% endfor %}
                         </span>
                     </li>

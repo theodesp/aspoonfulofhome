@@ -1,10 +1,10 @@
-{% load core_tags i18n %}
+{% load core_tags i18n wagtailcore_tags %}
 
-<aside>
+<div class="four column">
+    <h4>{% trans 'Tag cloud' %}</h4>
     <div class="tag-cloud">
-        <h4><span class="highlight">{% trans 'Tags' %}</span></h4>
         {% for tag in tags %}
-            <a href="#" style="font-size: {{tag.weight|floatformat:0}}pt;">{{tag}}</a>
+            <a href="{% pageurl tag_listing_page %}?tag={{ tag }}">{{ tag }}</a>
         {% endfor %}
     </div>
-</aside>
+</div>

@@ -79,7 +79,8 @@
         <footer>
             <div class="row">
                 <div class="eight column">
-                    <ul class="no-bullet footer-list smallmargin-top2">
+                    <h4>{% trans 'The olive oil bakers' %}</h4>
+                    <ul class="no-bullet footer-list margin-top">
                         <li class="link-box"><a href="{% pageurl request.site.root_page %}"><i class="icon-home"></i>{% trans 'Home' %}</a></li>
                         <li class="link-box"><a href="/blog"><i class="icon-blogger-blog"></i>{% trans 'Blog' %}</a></li>
                         <li class="link-box"><a href="/disclaimer"><i class="icon-warning-sign"></i>{% trans 'Disclaimer' %}</a></li>
@@ -90,14 +91,8 @@
                     <p>&copy; 2014 The Olive Oil Bakers - All Right Reserved</p>
                 </div>
 
-                <div class="four column">
-                    <ul class="social-list circle-social">
-                        <li><a href="#"><i class="social-facebook"></i></a></li>
-                        <li><a href="#"><i class="social-twitter"></i></a></li>
-                        <li><a href="#"><i class="social-dribbble"></i></a></li>
-                        <li><a href="#"><i class="social-linkedin"></i></a></li>
-                    </ul>
-                </div>
+                {% tag_cloud %}
+
             </div>
         </footer>
         {% endblock %}

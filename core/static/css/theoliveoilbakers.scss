@@ -36,19 +36,22 @@ body {
     }
 }
 
-.footer-list {
+.footer-list, .tag-cloud{
 
     li {
          @include transition(all, 0.25s, ease-in-out);
     }
-    li.link-box {
+    li.link-box, a,a:visited {
         background-color: $oliveoil;
+        border: none;
         cursor: pointer;
         &:hover {
             background-color: darken($oliveoil, 5%);
+            border: none;
         }
     }
 }
+
 
 #wagtail-userbar {
    top:200px;
