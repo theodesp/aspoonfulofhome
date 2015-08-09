@@ -1,0 +1,43 @@
+{% extends "core/elements/full_width_base.html" %}
+
+{% load static wagtailimages_tags wagtailcore_tags i18n %}
+
+{% block title %}
+    {% trans 'Search' %}{% if search_results %} {% trans 'results' %}{% endif %}
+{% endblock %}
+
+{% block content_data %}
+<h3 class="margin-bottom">
+    <span class="highlight">
+    {% trans 'Search results' %}{% if request.GET.query %} {% trans 'for' %} “{{ request.GET.query }}”{% endif %}</span>
+</h3>
+{% if search_picks %}
+    <div class="six column">
+        <h5>{% trans 'Editor picks' %}</h5>
+        <ul class="arrow">
+        {% for pick in search_picks %}
+            <li><a href="{% pageurl pick.page %}">{{ pick.page.title }}</a>
+            <p>{{ pick.description|safe }}</p></li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+{% if search_results %}
+<div class="six column">
+    <ul class="arrow">
+        <h5>{% trans 'All results' %}</h5>
+        {% for result in search_results %}
+            <li><a href="{% pageurl result.specific %}">{{ result.specific }}</a>
+            {% if result.specific.search_description %}
+                {{ result.specific.search_description|safe }}
+            {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% elif search_query %}
+    {% trans 'No results found' %}
+{% else %}
+    {% trans 'You didn’t search anything!' %}
+{% endif %}
+{% endblock %}

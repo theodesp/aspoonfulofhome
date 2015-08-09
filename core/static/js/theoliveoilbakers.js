@@ -420,24 +420,6 @@ jQuery(document).ready(function($) {
         easingType: 'easeOutQuart'
     });
 
-
-    //*** Progress Bar Jquery ***//
-    function progress(percent, element) {
-        var progressBarWidth = percent * element.width() / 100;
-        element.find('div').animate({
-            width: progressBarWidth
-        }, 2000).html("<div class='progress-meter'>" + percent + "%&nbsp;</div>");
-    }
-
-    $(document).ready(function() {
-        $('.progress-bar').each(function() {
-            var bar = $(this);
-            var percentage = $(this).attr('data-percent');
-
-            progress(percentage, bar);
-        });
-    });
-
     //*** Weather ***//
     $(document).ready(function() {
         $.simpleWeather({
@@ -460,6 +442,14 @@ jQuery(document).ready(function($) {
 
     //*** Media element Player Jquery ***//
     $('audio,video').mediaelementplayer();
+
+    // Search
+
+    $("#search").keydown(function(event){
+        if(event.keyCode == 13){
+            $(this).submit();
+        }
+    });
 
         //Slideshow
     $('.banner-blog').revolution({

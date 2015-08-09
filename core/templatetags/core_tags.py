@@ -68,10 +68,10 @@ def top_menu_children(context, parent):
 
 @register.inclusion_tag('core/elements/_pagetitle.html', takes_context=True)
 def pagetitle(context):
-    self = context.get('self')
+    self = context.get('self', None)
     site = Site.objects.get(is_default_site=True)
-    if self.pk == site.root_page.pk:
-        pagetitle = None
+    if self is None or self.pk == site.root_page.pk:
+        pagetitle = _('Search')
     else:
         pagetitle = self.title
     return {

@@ -3,15 +3,15 @@
     <div class="search-panel">
         <ul>
             <li>
-                <form id="search" action="#" method="get">
+                <form id="search" action="{% url 'search' %}" method="get">
                     <fieldset class="search-fieldset">
-                        <input type="text" id="search-form" 
-                        value="type and hit enter" 
-                        onblur="if (this.value == ''){this.value = 'type and hit enter'; }" 
+                        <input name="query" type="text" id="search-form"
+                        value="type and hit enter"
+                        onblur="if (this.value == ''){this.value = 'type and hit enter'; }"
                         onfocus="if (this.value == 'type and hit enter') {this.value = ''; }" />
                     </fieldset>      						
-                </form>                                
+                </form>
             </li>
         </ul>
     </div>
-</div>   
+</div>
