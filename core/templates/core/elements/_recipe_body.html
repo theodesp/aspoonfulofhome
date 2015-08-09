@@ -1,0 +1,30 @@
+{% load static core_tags wagtailcore_tags i18n wagtailimages_tags %}
+
+{% for block in recipe %}
+    {% if block.block_type == 'image' %}
+        {% image block.value width-709 as img %}
+        <img class="media-object" src="{{ img.url }}" alt="{{ img.title }}"/>
+    {% endif %}
+    {% if block.block_type == 'ingredients' %}
+        {{ block }}
+    {% endif %}
+    {% if block.block_type == 'serves' %}
+    <div class="six column mobile-six">
+        <div class="recipe-serves">
+        <strong><i class="icon-foodtray"></i> {% trans 'Serves' %}</strong>
+            {{ block.value.strip }}
+        </div>
+    </div>
+    {% endif %}
+    {% if block.block_type == 'time' %}
+    <div class="six column mobile-six">
+        <div class="recipe-time">
+        <strong><i class="icon-time"></i> {% trans 'Prep time' %}</strong>
+            {{ block.value.strip }}
+        </div>
+    </div>
+    {% endif %}
+    {% if block.block_type == 'steps' %}
+        {{ block }}
+    {% endif %}
+{% endfor %}

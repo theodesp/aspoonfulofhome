@@ -1,0 +1,27 @@
+{% extends "core/elements/right_sidebar_base.html" %}
+
+{% load static core_tags wagtailcore_tags i18n %}
+
+{% block articles %}
+    {% if request.GET.tag|length %}
+        <h4>Showing recipes tagged as <strong>{{ request.GET.tag|safe }}</strong>
+            <a href=" {% pageurl self %} "></a>
+        </h4>
+    {% endif %}
+    {% for recipe in repipes %}
+        {% include "core/elements/_recipe_index_line.html" %}
+    {% empty %}
+        <div class="alert info"><i class="icon-info-sign"></i>{% trans 'No recipes found!' %}</div>
+    {% endfor %}
+{% endblock %}
+
+{% block pagination %}
+
+{% endblock %}
+
+{% block sidebar %}
+<aside>
+    <div id="weather"></div>
+</aside>
+{% include "core/elements/related_links.html" with related_links=self.related_links.all only %}
+{% endblock %}

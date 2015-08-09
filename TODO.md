@@ -7,30 +7,29 @@
 * Add the content menu **DONE**
 * Add the recipy page model
 * Add the Blog page model **DONE**
-* Add email subscription
+* Add email subscription https://github.com/dokterbob/django-newsletter
 * Add comments **DONE**
 * Add the standardpage model **DONE**
-* Add models for listings
+* Add models for search listings
 * Add snippets for facebook, etc **DONE**
-* Add the theme
+* Add support for theme options
 * Add the embeded models
 * Add tags **DONE**
-* Add archives
+* Add blog archives
 * Add social buttons
-* Add save/print options for recipies
+* Add save/print options for recipes
 * Add review buttons/models
 * Add share buttons
 * Add related content
 * Add configurations
-* Add custom theme for admin
 * Add custom admin panels and hooks
 * Add password required pages
-* Add RoutablePageMixin pages usefull for rendering pages with different
+* Add RoutablePageMixin pages useful for rendering pages with different
   parameters like archive listing, author listing etc
 * Feature Detection
 * Update Readme file
 * Set up email provider (mandrill)
-* Add celery
+* Add celery **DONE**
 * Add internationalization support
 * Add Varnish/Squid Caching
 * Add Embedly
@@ -39,3 +38,6 @@
 * Add support for multiple blog formats
 * Add carousel **DONE**
 * Add tag cloud
+* Add recent posts widget
+* Add custom branding  http://docs.wagtail.io/en/v1.0rc1/advanced_topics/customisation/branding.html
+* Add Angular with typescript with wagtail api

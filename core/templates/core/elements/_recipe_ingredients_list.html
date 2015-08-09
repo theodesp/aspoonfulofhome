@@ -1,0 +1,25 @@
+{% load static core_tags wagtailcore_tags i18n wagtailimages_tags %}
+
+<div class="recipe-ingredients-list">
+    <div class="note">
+        <h4>{% trans 'Recipe' %}</h4>
+        <table class="table-white">
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>{% trans 'Ingredient' %}</th>
+                <th>{% trans 'Amount' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in self %}
+                <tr class="{% cycle 'odd' '' %}">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.ingredient }}</td>
+                <td>{{ item.amount }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -66,6 +66,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailforms',
     'wagtail.contrib.wagtailsitemaps',
     'django_extensions',
+    'djcelery',
 
     'core',
 )
@@ -86,7 +87,6 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'theoliveoilbakers.urls'
 WSGI_APPLICATION = 'theoliveoilbakers.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -97,6 +97,19 @@ WSGI_APPLICATION = 'theoliveoilbakers.wsgi.application'
         #'NAME': join(PROJECT_ROOT, 'db.sqlite3'),
     #}
 #}
+
+# Celery
+import djcelery
+djcelery.setup_loader()
+
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
+
+CELERY_TASK_SERIALIZER = ['json']
+CELERY_ACCEPT_CONTENT = ['json']
+
+CELERY_SEND_EVENTS = True
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

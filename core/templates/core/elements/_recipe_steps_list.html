@@ -1,0 +1,16 @@
+{% load static core_tags wagtailcore_tags i18n wagtailimages_tags %}
+<div class="recipe-steps-list">
+    <h4>{% trans 'Steps' %}</h4>
+    <!-- begin of accordions -->
+        {% for item in self %}
+            <div class="accordion-title">{{ item.title }}</div>
+            <div class="accordion-content">
+                {% image item.image width-600 as img %}
+                <img src="{{ img.url }}" alt="{{ img.title }}"/>
+                <p class="no-float margin-top margin-bottom">{{ item.step }}</p>
+                {% if item.video %}
+                     {{ item.video }}
+                {% endif %}
+            </div>
+        {% endfor %}
+</div>

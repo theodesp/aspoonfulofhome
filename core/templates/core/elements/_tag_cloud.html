@@ -1,0 +1,10 @@
+{% load core_tags i18n %}
+
+<aside>
+    <div class="tag-cloud">
+        <h4><span class="highlight">{% trans 'Tags' %}</span></h4>
+        {% for tag in tags %}
+            <a href="#" style="font-size: {{tag.weight|floatformat:0}}pt;">{{tag}}</a>
+        {% endfor %}
+    </div>
+</aside>

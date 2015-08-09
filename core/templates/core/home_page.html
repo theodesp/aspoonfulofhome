@@ -3,41 +3,39 @@
 {% load static core_tags wagtailcore_tags i18n %}
 
 {% block articles %}
-    <h1>{% trans 'A string to be translated' %}</h1>
+    {% include "core/elements/_intro.html" with intro=self.intro only %}
     {% include "core/elements/_body.html" with body=self.body only %}
     <div class="blog-wrapper">
+    {% recent_pages %}
     </div>
 {% endblock %}
 
 {% block sidebar %}
 <aside>
-                    	<div class="note-folded grey text-center">
-                        	<div class="widget-author">
-                                <img src="{% static 'images/gravatar-sotiria.png' %}" alt="" />
-                            </div>
-                        	<h4>Sotiria</h4>
-                            <hr/>
-                            <p>Visual artist, inspired, living and creating in Cyprus. My influences are Constructivism, Fauvism, Contemporary Art, and the dramatic landscape by which I am surrounded.
-                                I am a full time, stay at home mum to one daughter. When I am not reading, thinking about or practising my art, I bake for my family. I am especially interested in creating
-                                desserts with olive oil instead of other fats, and currently working on my other blog the olive bakers with the help of my family.
-                            </p>
-                        </div>
-                    </aside>
+    <div class="note-folded grey text-center">
+        <div class="widget-author">
+            <img src="{% static 'images/gravatar-sotiria.png' %}" alt="" />
+        </div>
+        <h4>Sotiria</h4>
+        <hr/>
+        <p>Visual artist, inspired, living and creating in Cyprus. My influences are Constructivism, Fauvism, Contemporary Art, and the dramatic landscape by which I am surrounded.
+        I am a full time, stay at home mum to one daughter. When I am not reading, thinking about or practising my art, I bake for my family. I am especially interested in creating
+        desserts with olive oil instead of other fats, and currently working on my other blog the olive bakers with the help of my family.
+        </p>
+    </div>
+</aside>
 
-                	<aside>
-                    	<div id="weather"></div>
-                    </aside>
+<aside>
+    <div id="weather"></div>
+</aside>
 
-                    <aside>
-                    	<h4><span class="highlight">Recent Post</span></h4>
-                        <ul class="arrow list-line margin-top">
-                            <li><a href="#">Late 2013 iMac Review</a></li>
-                            <li><a href="#">Where Things Come From</a></li>
-                            <li><a href="#">WordPress Themes by Indonez</a></li>
-                            <li><a href="#">The Camera Collection</a></li>
-                            <li><a href="#">Coffee in the Bay Area</a></li>
-                        </ul>
-                    </aside>
+<aside>
+    {% recent_recipes %}
+</aside>
+
+<aside>
+    {% recent_blogs %}
+</aside>
 {% endblock %}
 
 {% block pagination %}{% endblock %}

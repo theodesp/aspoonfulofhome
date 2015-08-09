@@ -1,7 +1,13 @@
-from django.utils.http import urlencode
+from itertools import chain
+
 from django import template
+from django.utils.translation import ugettext_lazy as _
+
+from taggit.models import Tag
 
 from wagtail.wagtailcore.models import Page, Site
+
+from core.models import BlogPage, RecipePage
 
 register = template.Library()
 
@@ -105,3 +111,37 @@ def social_list(page):
     return {
         'social_links': social_links,
     }
+
+
+@register.inclusion_tag('core/elements/_recent_page_list.html',
+takes_context=True)
+def recent_blogs(context, delimiter=5):
+    return {
+        'pages': BlogPage.objects.live().order_by('-date')[:delimiter],
+        'page_type_plural': _('Blogs'),
+        'request': context['request'],
+    }
+
+
+@register.inclusion_tag('core/elements/_recent_page_list.html',
+takes_context=True)
+def recent_recipes(context, delimiter=5):
+    return {
+        'pages': RecipePage.objects.live().order_by('-date')[:delimiter],
+        'page_type_plural': _('Recipes'),
+        'request': context['request'],
+    }
+
+
+@register.inclusion_tag('core/elements/_recent_pages.html',
+takes_context=True)
+def recent_pages(context, delimiter=5):
+    pages = Page.objects.filter(id__in=list(
+        chain(RecipePage.objects.values_list('id', flat=True),
+        BlogPage.objects.values_list('id', flat=True))))[:5]
+    return {
+        'pages': pages,
+        'request': context['request'],
+    }
+
+

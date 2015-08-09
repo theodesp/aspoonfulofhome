@@ -1313,7 +1313,7 @@ transition: all 0.4s ease-in-out 0s;
 }
 
 .accordion-title.open-accordion {
-background:#fd6d52;
+background:#31621B;
 border:1px solid #fd6d52;
 color:#fff !important;	
 }

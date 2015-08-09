@@ -48,7 +48,7 @@ float:left;
 .bg1 {background:#fd6d52 url(../images/sample_images/bg_featured.png) repeat-y top center !important;}
 .bg2 {background:#f7f7f7 url(../images/sample_images/bg_featured4.png) repeat-y top center !important;}
 .bg-border {background:none !important; border-top:1px solid #ddd;}
-.bg-border2 {background:#f7f7f7 !important; border-top:1px solid #ddd; -webkit-box-shadow: inset 0px -2px 8px 0px rgba(0,0,0,0.04); -moz-box-shadow: inset 0px -2px 8px 0px rgba(0,0,0,0.04); box-shadow: inset 0px -2px 8px 0px rgba(0,0,0,0.04);}  
+.bg-border2 {background:#f7f7f7 !important; border-top:1px solid #ddd; -webkit-box-shadow: inset 0px -2px 8px 0px rgba(0,0,0,0.04); -moz-box-shadow: inset 0px -2px 8px 0px rgba(0,0,0,0.04); box-shadow: inset 0px -2px 8px 0px rgba(0,0,0,0.04);}
 
 .bg1 h1, .bg1 h2, .bg1 h3,
 .bg1 h4, .bg1 h5, .bg1 h6,
@@ -730,9 +730,9 @@ position:relative !important;
 }
 
 .store-sale {
-width: 0; 
-height: 0; 
-border-top: 65px solid #fd6d52; 
+width: 0;
+height: 0;
+border-top: 65px solid #fd6d52;
 border-left: 65px solid transparent;
 float:right;
 margin-bottom:-65px;
@@ -810,9 +810,9 @@ x:-o-prefocus, .team-wrap h6 { margin-top:-27px; }
 .team-wrap p.subheader {
 color:#fff;
 margin-top:-4px;
-padding:3px 12px 4px 12px; 
-background:#fd6d52; 
-color:#fff; 
+padding:3px 12px 4px 12px;
+background:#fd6d52;
+color:#fff;
 font-size:11px;
 font-family: "Segoe UI", "helvetica neue", arial, sans-serif;
 text-transform:uppercase;
@@ -838,7 +838,7 @@ position:relative !important;
 }
 
 .desc-withicon {
-border-bottom:1px solid #ddd; !important; 
+border-bottom:1px solid #ddd; !important;
 padding:6px 0 20px 0;
 transition: all 0.6s ease-in-out;
 -moz-transition: all 0.6s ease-in-out;
@@ -848,14 +848,14 @@ transition: all 0.6s ease-in-out;
 }
 
 .desc-withicon i {
-position:relative; 
-font-size:100px; 
-top:-40px; 
-filter:alpha(opacity=20); 
-opacity: 0.2; 
-transform:rotate(15deg); 
+position:relative;
+font-size:100px;
+top:-40px;
+filter:alpha(opacity=20);
+opacity: 0.2;
+transform:rotate(15deg);
 -ms-transform:rotate(15deg);
--webkit-transform:rotate(15deg); 
+-webkit-transform:rotate(15deg);
 transition: all 0.6s ease-in-out;
 -moz-transition: all 0.6s ease-in-out;
 -webkit-transition: all 0.6s ease-in-out;
@@ -1001,14 +1001,14 @@ list-style: none;
 margin: 0;
 }
 
-.featured-border-grid:before, 
-.featured-border-grid:after { 
-content: " "; 
-display: table; 
+.featured-border-grid:before,
+.featured-border-grid:after {
+content: " ";
+display: table;
 }
 
-.featured-border-grid:after { 
-clear: both; 
+.featured-border-grid:after {
+clear: both;
 }
 
 .featured-border-grid li {
@@ -1164,15 +1164,15 @@ float:right !important;
 }
 
 .flatborder.small i {
-width:52px; 
-height:52px; 
+width:52px;
+height:52px;
 background-size:52px 52px;
 margin:0px auto 8px auto !important;
 }
 
 .flatborder.medium i {
-width:82px; 
-height:82px; 
+width:82px;
+height:82px;
 background-size:82px 82px;	
 margin:0px auto 8px auto !important;	
 }
@@ -1217,10 +1217,10 @@ transition: all 0.6s ease-in-out;
 -webkit-transition: all 0.6s ease-in-out;
 -o-transition: all 0.6s ease-in-out;
 -ms-transition: all 0.6s ease-in-out;
-filter:alpha(opacity=60); 
+filter:alpha(opacity=60);
 opacity: 0.6;
-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); 
-filter: gray; 
+filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+filter: gray;
 -webkit-filter: grayscale(100%);
 float:left;
 }
@@ -1231,10 +1231,10 @@ height:48px;
 }
 
 ul.client-box li:hover {
-filter:alpha(opacity=100); 
+filter:alpha(opacity=100);
 opacity: 1;
 filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
--webkit-filter: grayscale(0%); 
+-webkit-filter: grayscale(0%);
 }
 
 ul.client-box li:nth-child(3n){
@@ -1388,7 +1388,7 @@ margin-bottom:17px;
 /***** Newsletter Box Stylesheet *****/
 .newsletter-box{
 position:relative;
-margin:12px auto 24px auto;  
+margin:12px auto 24px auto;
 z-index:100;
 padding:32px 26px 6px 26px;
 background: #fff; /* Old browsers */
@@ -1688,11 +1688,11 @@ float:left;
 .quote-note {
 background-image:url(../images/testi-bg.gif);
 background-repeat:repeat-y;
-border: solid 1px #dbdcde; 
-margin: 5px 0 0px 0; 
+border: solid 1px #dbdcde;
+margin: 5px 0 0px 0;
 padding: 21px 20px 23px 20px;
 position:relative;
-float:left; 
+float:left;
 }
 
 ul.post-info {
@@ -1794,7 +1794,7 @@ font-size:12px;
 display:block;
 color:#8c8c8c;
 float:left;
-background: #fff; 
+background: #fff;
 border: solid 1px #d9d9d9;
 text-decoration:none;
 margin:0 5px 5px 0;
@@ -2011,7 +2011,7 @@ border-width: 1px 0 0 !important;
 box-shadow: none !important;
 clear: both;
 margin: 1.25em 0 1.1875em;
-height: 0; 
+height: 0;
 }
 
 /* Popular List */
@@ -2351,8 +2351,8 @@ border:1px solid #b3cda1;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 border-radius: 3px;
--webkit-box-shadow:0px 1px 2px 0px rgba(0,0,0,.1);  
--moz-box-shadow:0px 1px 2px 0px rgba(0,0,0,.1); 
+-webkit-box-shadow:0px 1px 2px 0px rgba(0,0,0,.1);
+-moz-box-shadow:0px 1px 2px 0px rgba(0,0,0,.1);
 box-shadow:0px 1px 2px 0px rgba(0,0,0,.1);
 clear:both;
 display:block;
@@ -2517,7 +2517,7 @@ border-width: 1px 0 0 !important;
 box-shadow: none !important;
 clear: both;
 margin: 1.25em 0 1.1875em;
-height: 0; 
+height: 0;
 }
 
 footer ul li a, footer ul li a:visited {
@@ -2525,7 +2525,7 @@ line-height:24px;
 color:#c8e3a2 !important;
 text-decoration:none;
 }
-    
+
 .payment-list li img {
 width:32px;
 height:20px;
@@ -2563,3 +2563,7 @@ ul#flck-thumb div.no-image { display:none; }
 .thumbs div img { width:100%; height:100%; display: block; }
 .thumbs div a img { border: none; }
 #flickr-noscript { display:none; }
+
+.no-float {
+    float:none !important;
+}

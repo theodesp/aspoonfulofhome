@@ -1,0 +1,10 @@
+{% load static core_tags wagtailcore_tags i18n %}
+
+{% if pages %}
+<h4><span class="highlight">{% trans 'Recent' %} {{ page_type_plural }}</span></h4>
+<ul class="arrow list-line margin-top">
+    {% for page in pages %}
+    <li><a href="{% pageurl page %}">{{ page.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}

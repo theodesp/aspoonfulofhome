@@ -1,0 +1,57 @@
+{% load static core_tags wagtailcore_tags wagtailimages_tags i18n %}
+
+{% for page in pages %}
+    <div class="blog-wrapper">
+        <div class="blogmedia-wrap">
+        {% if page.specific.carousel_items.all %}
+            <div class="banner-blog">
+                <ul>
+                {% for carousel_item in page.specific.carousel_items.all %}
+                    <li data-transition="slidehorizontal">
+                        {% image carousel_item.image width-709 as img %}
+                        <img src="{{ img.url }}" alt="{{ img.title }}"/>
+                    </li>
+                {% endfor %}
+                </ul>
+                <div class="tp-bannertimer tp-bottom"></div>
+            </div>
+        {% elif page.specific.promo_image %}
+            {% image page.specific.promo_image width-709 as img %}
+            <img class="media-object" src="{{ img.url }}" alt="{{ img.title }}"/>
+
+            <ul class="no-bullet post-info">
+                <li><i class="icon-user"></i><span>{{ page.owner }}</span></li>
+                {% if page.specific.tags.all %}
+                    <li class="no-tag">
+                        <i class="icon-tag"></i>
+                        <span>
+                        {% for tag in page.specific.tags.all %}
+                            <a href="{% pageurl self %}?tag={{ tag }}">{{ tag }}</a>,
+                        {% endfor %}
+                        </span>
+                    </li>
+                {% endif %}
+                <li class="no-tag2"><i class="icon-clockalt-timealt"></i><span>{{ page.specific.date }}</span></li>
+                <li class="no-tag2"><i class="icon-comment"></i><span class="disqus-comment-count" data-disqus-url="{% pageurl page %}"></span></li>
+            </ul>
+        {% endif %}
+        </div>
+        <div class="blogcontent-wrap">            	
+            <div class="post-type">
+                <i class="icon-picture"></i>
+            </div>
+            <h3><a href="{% pageurl page %}">{{ page.title }}</a></h3>
+            {% if page.search_description %}
+                <p>{{ page.search_description }}</p>
+            {% endif %}
+            <hr>
+
+            {% social_list page %}
+
+            <a href="{% pageurl page %}" class="button-plain small orange">{% trans 'Learn more' %} <span class="plain-arrow">&gt;</span></a>
+        </div>
+    <div class="clear"></div>
+</div>
+{% empty %}
+    <div class="alert info"><i class="icon-info-sign"></i>{% trans 'No recent posts found!' %}</div>
+{% endfor %}

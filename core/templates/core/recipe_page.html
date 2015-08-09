@@ -1,0 +1,63 @@
+{% extends "core/elements/right_sidebar_base.html" %}
+
+{% load static core_tags wagtailcore_tags i18n wagtailimages_tags %}
+
+{% block articles %}
+<div class="blog-wrapper">
+    <div class="blogmedia-wrap">
+    {% if self.carousel_items.all %}
+        <div class="banner-blog">
+            <ul>
+            {% for carousel_item in self.carousel_items.all %}
+                <li data-transition="slidehorizontal">
+                    {% image carousel_item.image width-709 as img %}
+                    <img src="{{ img.url }}" alt="{{ img.title }}"/>
+                </li>
+            {% endfor %}
+            </ul>
+            <div class="tp-bannertimer tp-bottom"></div>
+        </div>
+    {% elif self.promo_image %}
+        {% image self.promo_image width-709 as img %}
+        <img class="media-object" src="{{ img.url }}" alt="{{ img.title }}"/>
+
+        <ul class="no-bullet post-info">
+            <li><i class="icon-user"></i><span>{{ self.owner }}</span></li>
+            {% if self.tags.all %}
+                <li class="no-tag">
+                    <i class="icon-tag"></i>
+                    <span>
+                    {% for tag in recipe.tags.all %}
+                        <a href="{% pageurl self %}?tag={{ tag }}">{{ tag }}</a>,
+                    {% endfor %}
+                    </span>
+                </li>
+            {% endif %}
+            <li class="no-tag2"><i class="icon-clockalt-timealt"></i><span>{{ self.date }}</span></li>
+            <li class="no-tag2"><i class="icon-comment"></i><span><a href="{% pageurl self %}#disqus_thread"></a></li>
+        </ul>
+    {% endif %}
+    </div>
+    <div class="blogcontent-wrap">
+        <div class="post-type">
+            <i class="icon-picture"></i>
+        </div>
+        <h3><a href="{% pageurl self %}">{{ self.title }}</a></h3>
+        {% include "core/elements/_body.html" with body=self.body only %}
+        {% include "core/elements/_recipe_body.html" with recipe=self.recipe only %}
+    </div>
+    <!-- Begin of Comment -->
+    <div id="comment">
+        <h4>Responses to "{{ self.title }}"</h4>
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+<aside>
+    <div id="weather"></div>
+</aside>
+{% include "core/elements/related_links.html" with related_links=self.related_links.all only %}
+{% endblock %}
