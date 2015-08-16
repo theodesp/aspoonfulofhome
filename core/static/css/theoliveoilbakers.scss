@@ -9,6 +9,11 @@ $dampolive: #81a844;
 $paleolive: #A9CC00;
 $grey: #c8e3a2;
 
+$bez : #FCFFEE;
+$turquoise : #83B89E;
+$brown : #A86207;
+$lightyellow : #F6DA7B;
+$red : #C26181;
 
 
 /***** Mixins *****/
@@ -22,18 +27,28 @@ $grey: #c8e3a2;
 
 /***** Base *****/
 body {
-  background: url('/static/images/pattern.jpg') repeat $dampolive;
+  background-color: $red;
 }
 
 /***** Footer *****/
 .circle-social {
     li {
-        background-color: $oliveoil;
+        background-color: $turquoise;
 
         &:hover {
-            background-color: darken($oliveoil, 5%);
+            background-color: darken($turquoise, 5%);
         }
     }
+}
+
+.circle-number {
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    margin-left: 5px;
+    padding: 0px 4px;
+    border: 1px solid lightgrey;
+    font-size: 10px;
 }
 
 .footer-list, .tag-cloud{
@@ -42,11 +57,11 @@ body {
          @include transition(all, 0.25s, ease-in-out);
     }
     li.link-box, a,a:visited {
-        background-color: $oliveoil;
+        background-color: $red;
         border: none;
         cursor: pointer;
         &:hover {
-            background-color: darken($oliveoil, 5%);
+            background-color: darken($red, 5%);
             border: none;
         }
     }
@@ -59,7 +74,7 @@ body {
 
 ul.social-list li {
     a,a:visited {
-        color: $darkolive;
+        color: $red;
     }
 }
 
@@ -68,7 +83,7 @@ ul.social-list li {
         vertical-align: baseline;
     }
     .top-desc i:hover {
-        color: $lightolive;
+        color: $red;
     }
 }
 

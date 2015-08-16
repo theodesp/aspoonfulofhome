@@ -1,0 +1,13 @@
+{% load i18n wagtailcore_tags %}
+
+<h4 class="highlight">{% trans 'Connect with us' %}</h4>
+<ul class="social-list square-social">
+    {% for social_profile in social_profiles %}
+        <li class="{{ social_profile.social_type }}-color">
+            <a href="{{ social_profile.url }}">
+                <i class="social-{{ social_profile.social_type }}"></i>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+

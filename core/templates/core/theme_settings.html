@@ -1,0 +1,30 @@
+{% extends "wagtailadmin/base.html" %}
+{% load i18n wagtailimages_tags %}
+
+{% block titletag %}{% trans "Theme Settings" %}{% endblock %}
+
+{% block bodyclass %}menu-theme{% endblock %}
+
+{% block content %}
+{% trans "Change theme setttings" as site_str %}
+{% include "wagtailadmin/shared/header.html" with title=site_str merged=2 tabbed=2 icon="cogs" %}
+
+<ul class="tab-nav merged">
+    <li class="active"><a href="#basic">{% trans "Basic" %}</a></li>
+    <li><a href="#social">{% trans "Social" %}</a></li>
+    <li><a href="#advanced">{% trans "Advanced" %}</a></li>
+</ul>
+
+<form>
+<div class="tab-content">
+    <section id="basic" class="active nice-padding">
+    </section>
+    <section id="social" class="active nice-padding">
+    </section>
+    <section id="advanced" class="active nice-padding">
+    </section>
+</div>
+</form>
+
+
+{% endblock %}

@@ -1,13 +1,14 @@
 from itertools import chain
 
 from django import template
+from django.db.models import Count
 from django.utils.translation import ugettext_lazy as _
 
 from taggit.models import Tag
 
 from wagtail.wagtailcore.models import Page, Site
 
-from core.models import BlogPage, RecipePage, RecipeIndexPage
+from core.models import BlogPage, RecipePage, RecipeIndexPage, SocialProfile
 
 register = template.Library()
 
@@ -70,7 +71,7 @@ def top_menu_children(context, parent):
 def pagetitle(context):
     self = context.get('self', None)
     site = Site.objects.get(is_default_site=True)
-    if self is None or self.pk == site.root_page.pk:
+    if self is None:
         pagetitle = _('Search')
     else:
         pagetitle = self.title
@@ -148,12 +149,24 @@ def recent_pages(context, delimiter=5):
 @register.inclusion_tag('core/elements/_tag_cloud.html',
 takes_context=True)
 def tag_cloud(context):
-    tags = Tag.objects.filter(id__in=
-        RecipePage.objects.values_list('tags', flat=True))
+    tags = Tag.objects.filter(id__in=RecipePage.objects
+    .values_list('tags', flat=True)).annotate(tag_count=Count('recipepage'))
+    #TODO:Make generic tag listing page tha covers blog posts also
     return {
         'tags': tags,
         'tag_listing_page': RecipeIndexPage.objects.first(),
         'request': context['request'],
     }
+
+
+# Social profile snippets
+@register.inclusion_tag('core/elements/_social_profile.html',
+    takes_context=True)
+def social_profiles(context):
+    return {
+        'social_profiles': SocialProfile.objects.all(),
+        'request': context['request'],
+    }
+
 
 

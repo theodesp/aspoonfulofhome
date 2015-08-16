@@ -1,10 +1,10 @@
-{% load core_tags i18n wagtailcore_tags %}
+{% load i18n wagtailcore_tags %}
 
 <div class="four column">
     <h4>{% trans 'Tag cloud' %}</h4>
     <div class="tag-cloud">
         {% for tag in tags %}
-            <a href="{% pageurl tag_listing_page %}?tag={{ tag }}">{{ tag }}</a>
+            <a href="{% pageurl tag_listing_page %}?tag={{ tag }}">{{ tag }}<span class="circle-number">{{ tag.tag_count }}</span></a>
         {% endfor %}
     </div>
 </div>

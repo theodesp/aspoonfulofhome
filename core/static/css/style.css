@@ -215,7 +215,7 @@ position:relative;
 #top-search ul:before {
 width: 10px;
 height: 10px;
-background:#31621b;
+background:#A86207;
 content: '';
 position: absolute;
 z-index:888;
@@ -445,7 +445,7 @@ padding:0px;
 top:48px;
 left:-14px;
 width:160px;
-background-color:#31621b;
+background-color:#A86207;
 -webkit-box-shadow: 0px 2px 0px rgba(50, 50, 50, 0.15);
 -moz-box-shadow:    0px 2px 0px rgba(50, 50, 50, 0.15);
 box-shadow:         0px 2px 0px rgba(50, 50, 50, 0.15);
@@ -1564,7 +1564,7 @@ float:left;
 
 .blog-wrapper h3 {
 width:100%;
-background-color:#B4CC3D;
+background-color:#F6DA7B;
 padding:27px 16px;
 color:#fff;
 position:relative;
@@ -1662,7 +1662,7 @@ float:right;
 .blogcontent-wrap .post-type {
 width:83px;
 height:83px;
-background-color:#31621b;
+background-color:#A86207;
 text-align:center;
 line-height:82px;
 font-size:24px;
@@ -1806,8 +1806,8 @@ transition: all .25s ease-in-out;
 
 .pages a:hover, .pages a.current {
 color:#fff;
-background:#31621b;
-border:1px solid #31621b;
+background:#A86207;
+border:1px solid #A86207;
 }
 
 /* Sharing Social */
@@ -1909,7 +1909,7 @@ padding:1px 9px;
 font-size:10px;
 color:#fff;
 text-decoration:none;
-background:#fd6d52;
+background:#C26181;
 transition: background .25s ease-in-out;
 -moz-transition: background .25s ease-in-out;
 -webkit-transition: background .25s ease-in-out;
@@ -1951,7 +1951,7 @@ float:left;
 }
 
 form#comment-form .buttoncontact {
-background:#fd6d52;
+background:#C26181;
 }
 
 form#comment-form .buttoncontact:hover {
@@ -2055,7 +2055,7 @@ font-size: 11px;
 text-decoration:none;
 font-family: "Segoe UI", "helvetica neue", arial, sans-serif;
 text-transform:uppercase;
-color:#fd6d52;
+color:#C26181;
 float:left;
 }
 
@@ -2065,7 +2065,7 @@ font-size: 11px;
 text-decoration:none;
 font-family: "Segoe UI", "helvetica neue", arial, sans-serif;
 text-transform:uppercase;
-color:#fd6d52;
+color:#C26181;
 float:left;
 }
 
@@ -2079,7 +2079,7 @@ margin-right:4px;
 ul.popular-list li p.popular-rating i {
 font-size:11px;
 position:relative;
-color:#fd6d52;
+color:#C26181;
 top:1px;
 margin-right:1px;
 }
@@ -2145,7 +2145,7 @@ font-size: 11px;
 text-decoration:none;
 text-transform:uppercase;
 font-family: "Segoe UI", "helvetica neue", arial, sans-serif;
-color:#fd6d52;
+color:#C26181;
 float:left;
 }
 
@@ -2155,7 +2155,7 @@ font-size: 11px;
 text-decoration:none;
 text-transform:uppercase;
 font-family: "Segoe UI", "helvetica neue", arial, sans-serif;
-color:#fd6d52;
+color:#C26181;
 float:left;
 }
 
@@ -2167,7 +2167,7 @@ margin-right:5px;
 
 ul.news-child li a.button-more, ul.news-child li a.button-more:visited {
 margin:0px 7px 0 0;
-color:#fd6d52;
+color:#C26181;
 float:right;
 }
 
@@ -2198,7 +2198,7 @@ font-size: 11px;
 text-decoration:none;
 text-transform:uppercase;
 font-family: "Segoe UI", "helvetica neue", arial, sans-serif;
-color:#fd6d52;
+color:#C26181;
 float:left;
 }
 
@@ -2318,7 +2318,7 @@ overflow:hidden;
 }
 
 form#contactform .buttoncontact {
-background:#fd6d52;
+background:#C26181;
 }
 
 form#contactform .buttoncontact:hover {
@@ -2473,7 +2473,7 @@ text-decoration:none;
 }
 
 .footer-list li.link-box {
-background-color:#5e5e5e;
+background-color:#C26181;
 -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
 border-radius: 2px;
@@ -2547,7 +2547,7 @@ line-height:20px;
 color: #bababa;
 }
 
-#twitter a {color: #fd6d52 !important;}
+#twitter a {color: #C26181 !important;}
 
 #twitter b a,
 #twitter b a:hover {

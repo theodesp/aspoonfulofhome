@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^search/', search, name='search'),
+    url(r'^search/', search.search, name='search'),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^sitemap\.xml', sitemap, name='sitemap_xml'),
     url(r'', include(wagtail_urls)),

@@ -5,6 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from modelcluster.fields import ParentalKey
+
+from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import (
@@ -412,3 +414,36 @@ RecipePage.promote_panels = Page.promote_panels + [
 
 class RecipePageCarouselItem(Orderable, CarouselItem):
     page = ParentalKey('RecipePage', related_name='carousel_items')
+
+
+SOCIAL_PROFILE_CHOICES = (
+        ('facebook', 'facebook'),
+        ('twitter', 'twitter'),
+        ('instagram', 'instagram'),
+        ('googleplus', 'googleplus'),
+        ('linkedin', 'linkedin'),
+        ('dribble', 'dribble'),
+        ('vimeo', 'vimeo'),
+        ('pininterest', 'pininterest'),
+        ('flickr', 'flickr'),
+        ('soundcloud', 'soundcloud'),
+        ('youtube', 'youtube'),
+        ('rss', 'rss'),
+    )
+
+
+@register_snippet
+class SocialProfile(models.Model):
+    social_type = models.CharField(max_length=32,
+        choices=SOCIAL_PROFILE_CHOICES)
+
+    url = models.URLField("Social link URL",
+        blank=True, help_text=_("Social link URL"))
+
+    panels = [
+        FieldPanel('url'),
+        FieldPanel('social_type'),
+  ]
+
+    def __unicode__(self):
+        return self.social_type
