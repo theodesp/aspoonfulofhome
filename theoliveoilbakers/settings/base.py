@@ -7,26 +7,25 @@ https://docs.djangoproject.com/en/1.8/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
-
+import sys
 from os.path import abspath, dirname, join
 from django.utils.translation import ugettext_lazy as _
+from os import environ
 
 # Absolute filesystem path to the Django project directory:
 PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'no-secret'
+SECRET_KEY = environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ('*',)
 
 ADMINS = (
      ('Theo', 'thdespou@hotmail.com'),
@@ -36,7 +35,7 @@ MANAGERS = ADMINS
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'http://109.228.6.169'
 
 
 # Application definition
@@ -90,13 +89,23 @@ WSGI_APPLICATION = 'theoliveoilbakers.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-## SQLite (simplest install)
-#DATABASES = {
-    #'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': join(PROJECT_ROOT, 'db.sqlite3'),
-    #}
-#}
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3'
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': environ['DATABASE_NAME'],
+            'USER': environ['DATABASE_USER'],
+            'PASSWORD': environ['DATABASE_PASSWORD'],
+            'HOST': environ.get('DATABASE_HOST', ''),
+            'PORT': environ.get('DATABASE_PORT', '')
+        }
+    }
 
 # Celery
 import djcelery
@@ -138,6 +147,10 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
+  
+TEMPLATE_DIRS = (
+    join(PROJECT_ROOT, 'templates'),
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -161,6 +174,7 @@ from django.conf import global_settings
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
+    'django.core.context_processors.static',
 )
 
 # Wagtail settings
@@ -168,7 +182,7 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
 LOGIN_URL = 'wagtailadmin_login'
 LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
-WAGTAIL_SITE_NAME = "theoliveoilbakers"
+WAGTAIL_SITE_NAME = "aspoonfulofhome"
 
 INTERNAL_IPS = ('127.0.0.1', '10.0.2.2')
 
@@ -215,3 +229,4 @@ LOGGING = {
 # Whether to use face/feature detection to improve image cropping - requires OpenCV
 WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = False
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

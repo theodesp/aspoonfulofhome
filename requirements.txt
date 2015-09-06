@@ -1,6 +1,6 @@
 # Minimal requirements
-Django==1.8.2
-wagtail==1.0rc2
+Django==1.8.4
+wagtail
 pillow
 django-celery==3.1.16
 
@@ -10,3 +10,7 @@ elasticsearch==1.1.1
 
 # Recommended components to improve performance in production:
 django-redis==3.8.2
+django_extensions
+libsass
+django-libsass
+gunicorn
