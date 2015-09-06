@@ -1,0 +1,7 @@
+---
+- name: restart nginx
+  sudo: yes
+  shell: '{{ item }}'
+  with_items:
+    - /usr/local/nginx/sbin/nginx -s stop
+    - /usr/local/nginx/sbin/nginx

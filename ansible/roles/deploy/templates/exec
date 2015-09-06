@@ -1,0 +1,13 @@
+#!/bin/bash
+source {{ virtualenv }}bin/activate
+export DEBUG={{ debug }}
+export DATABASE_NAME={{ dbname }}
+export DATABASE_USER={{ dbuser }}
+export DATABASE_PASSWORD={{ dbpassword }}
+export DATABASE_HOST={{ dbhost }}
+export DATABASE_PORT={{ dbport }}
+export STATIC_ROOT={{ static }}
+export MEDIA_ROOT={{ media }}
+export SECRET_KEY="{{ secret_key }}"
+export DOMAIN={{ domain }}
+python {{ project }}manage.py $@

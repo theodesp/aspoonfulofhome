@@ -1,0 +1,26 @@
+---
+- hosts: spoonfulofhome
+  pre_tasks:
+  - name: test connection
+    ping:
+    
+  roles:
+  - deploy
+
+  vars:
+    virtualenv: '/opt/deploy/venv'
+    virtualenvname: 'pyenv'
+    project: '/opt/deploy/aspoonfulofhome/'
+    media: '/opt/deploy/aspoonfulofhome/media/'
+    static: '/opt/deploy/aspoonfulofhome/static/'
+    repo: 'git@bitbucket.org:thdespou/theoliveoilbakers.git'
+    domain: 'aspoonfulofhome.com'
+    wsgi: 'theoliveoilbakers.wsgi'
+    deploy_user: 'deploy'
+    dbhost: 'localhost'
+    dbport: ''
+    requirements: 'requirements.txt'
+    debug: false
+
+  vars_files:
+    - local_vars.yml

@@ -1,0 +1,13 @@
+---
+- name: Create user group
+  group: name='{{ deploy_user }}' state=present
+  sudo: no
+
+- name: Create user account
+  sudo: no
+  user: name='{{ deploy_user }}'
+        state=present generate_ssh_key=yes ssh_key_bits=2048 ssh_key_file=.ssh/id_rsa shell=/bin/bash
+
+- name: Create empty repo directory
+  sudo: no
+  file: path='{{ virtualenv }}' state=directory owner='{{ deploy_user }}' group='{{ deploy_user }}' mode=0755

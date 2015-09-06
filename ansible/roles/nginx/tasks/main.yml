@@ -1,0 +1,111 @@
+---
+- name: Install nginx dependencies
+  apt: pkg={{ item }} state=installed update_cache=true
+  with_items:
+    - build-essential
+    - libpcre3
+    - libpcre3-dev
+    - libssl-dev
+    - unzip
+  tags:
+    - web
+    - server
+
+- name: Install nginx
+  shell: 'chdir=/tmp {{ item }} creates=/usr/local/nginx/sbin/nginx'
+  sudo: yes
+  with_items:
+    - wget http://nginx.org/download/nginx-1.8.0.tar.gz
+    - tar -zxvf nginx-1.8.0.tar.gz
+    - cd nginx-1.8.0 && ./configure --with-http_ssl_module && make && make install
+  tags:
+    - web
+    - server
+
+- name: Create the sites-available, sites-enabled and conf.d directories for Nginx
+  file:
+    path: "/usr/local/nginx/{{ item }}"
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+  with_items:
+    - "sites-available"
+    - "sites-enabled"
+    - "conf.d"
+  sudo: yes
+
+- name: Copy sites_available
+  template: >
+    src=aspoonfulofhome.conf.j2 
+    dest=/usr/local/nginx/sites-available/aspoonfulofhome.conf
+    mode=0644
+    owner=root
+    group=root
+  sudo: yes
+  tags:
+    - nginx
+    - config
+    - files
+
+- name: Make link for sites_enabled
+  file:
+    path: "/usr/local/nginx/sites-enabled/aspoonfulofhome.conf"
+    src: "/usr/local/nginx/sites-available/aspoonfulofhome.conf"
+    state: link
+  sudo: yes
+  notify: restart nginx
+  tags:
+    - nginx
+    - config
+    - files
+    
+- name: Remove default config files
+  file: >
+    path=/usr/local/nginx/conf.d/{{ item }}.conf
+    state=absent
+  with_items:
+    - default
+    - example_ssl
+  tags:
+    - nginx
+    - config
+    - files
+  notify: restart nginx
+
+- name: Configure gzip
+  template: >
+    src=gzip.conf.j2
+    dest=/usr/local/nginx/conf.d/gzip.conf
+    mode=0644
+    owner=root
+    group=root
+  tags:
+    - nginx
+    - config
+    - files
+  notify: restart nginx
+  
+- name: create init script
+  template: >
+    src=nginx.j2 
+    dest=/etc/init.d/nginx
+    mode=0755
+    owner=root
+    group=root
+  sudo: yes
+  tags:
+    - nginx
+    - config
+    - files
+    
+- name: update init script
+  command: /usr/sbin/update-rc.d -f nginx defaults
+
+- name: Ensure nginx is running, and starts on boot
+  service: >
+    name=nginx
+    state=started
+    enabled=yes
+  tags:
+    - nginx

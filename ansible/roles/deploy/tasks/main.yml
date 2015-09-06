@@ -1,0 +1,77 @@
+---
+- name: Install dependency packages
+  apt: pkg={{ item }} state=present
+  remote_user: deploy
+  sudo: yes
+  with_items:
+    - build-essential
+    - python-software-properties
+    - curl
+    - libjpeg-dev
+    - libpng-dev
+    - libpq-dev
+    - pkg-config
+    - python-dev
+    - python-imaging
+    - python-psycopg2
+    - python-setuptools
+    - python-virtualenv
+    - unzip
+    - zlib1g-dev
+
+- name: Install pip
+  easy_install: name=pip
+  sudo: yes
+  remote_user: deploy
+  
+- name: Manually create the initial virtualenv
+  command: virtualenv '{{ virtualenv }}' -p python2.7 creates='{{ virtualenv }}'
+  remote_user: deploy
+  
+- name: Install Python requirements
+  pip: requirements='{{ requirements }}'
+    virtualenv='{{ virtualenv }}'
+    chdir='{{ project }}'
+  remote_user: deploy
+  tags:
+    - db
+      
+- name: Install Node.js modules
+  sudo: yes
+  remote_user: deploy
+  shell: /usr/bin/npm install -g {{ item }}
+    chdir='{{ project }}'
+  with_items:
+    - bower
+    - coffee-script
+
+- name: Create node links
+  sudo: yes
+  remote_user: deploy
+  file: src=/usr/local/nodejs/node-v0.12.7/lib/node_modules/coffee-script/bin/coffee dest=/usr/bin/coffee owner=deploy group=deploy state=link
+  
+- name: Create node links
+  sudo: yes
+  remote_user: deploy
+  file: src=/usr/local/nodejs/node-v0.12.7/lib/node_modules/bower/bin/bower dest=/usr/bin/bower owner=deploy group=deploy state=link
+
+- name: Creates directory
+  file: path={{ item }} state=directory owner=deploy group=www-data mode=0775
+  remote_user: deploy
+  with_items:
+    - '{{ media }}'
+    - '{{ static }}'
+
+- name: Upload shortcut file for executing Python functions within the environment
+  remote_user: deploy
+  template: src=exec dest={{ virtualenv }}exec mode=755
+  
+- name: Copy virtualenv wrapper file
+  remote_user: deploy
+  template: src=pyvenv dest={{ virtualenv }}pyenv mode=755
+  
+- name: Gather frontend components from Bower
+  remote_user: deploy
+  command: bower install chdir='{{ project }}'
+  tags:
+      - bower

@@ -1,0 +1,12 @@
+---
+- name: Install mailutils & Postfix
+  apt: pkg={{ item }} update_cache=yes
+  with_items:
+    - postfix
+    - mailutils
+  sudo: yes
+
+- name: Listen only on local interface
+  lineinfile: dest=/etc/postfix/main.cf regexp='^inet_interfaces' line='inet_interfaces = 127.0.0.1'
+  sudo: yes
+  notify: restart postfix

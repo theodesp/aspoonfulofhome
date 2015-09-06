@@ -1,0 +1,7 @@
+---
+- name: Restart Redis
+  service: >
+    name={{ redis_initd_name }}
+    state=restarted
+  tags:
+    - redis

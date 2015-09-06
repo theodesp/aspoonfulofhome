@@ -1,0 +1,55 @@
+user www-data;
+worker_processes 2;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 768;
+}
+
+http {
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+    server_names_hash_bucket_size 64;
+    server_tokens off;
+    include /usr/local/nginx/conf/mime.types;
+    default_type application/octet-stream;
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    server {
+        server_name {{ domain }} www.{{ domain }};
+        listen 80;
+        rewrite ^ http://$server_name$request_uri? permanent;
+    }
+
+    server {
+        server_name {{ domain }};
+        access_log off;
+        
+
+        location /static/ {
+            alias {{ static }};
+        }
+
+        location /media/ {
+            alias {{ media }};
+        }
+
+        location /robots.txt {
+            alias {{ project }}robots.txt;
+        }
+
+        location / {
+            proxy_pass http://127.0.0.1:8000;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-Host $server_name;
+            proxy_set_header X-Real-IP $remote_addr;
+            client_max_body_size 1024m;
+            add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+            add_header Access-Control-Allow-Origin *;
+        }
+    }
+}
